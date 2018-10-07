@@ -401,9 +401,9 @@ Another problem is that the keyspace is surprisingly small. Suppose that there a
 
 \chapter{Other classes of substitution ciphers}
 \section{Homophonic ciphers}
-\textbf{Homophonic substitution} was an early attempt to make monoalphabetic substitution ciphers harder to break. The basic idea behind homophonic substitution is to allocate \textbf{more than one letter or symbol} to the higher frequency letters\supercite{homophonic}. For example, we might use 6 different symbols to encrypt `e' and `t', 2 symbols for `m' and only 1 symbol for `z'.\\\\
+\textbf{Homophonic substitution} was an early attempt to make monoalphabetic substitution ciphers harder to break. The basic idea behind homophonic substitution is to allocate \textbf{more than one letter or symbol} to the higher frequency letters\supercite{homophonic}. For example, we might use 6 different symbols to encrypt \textsf{e} and \textsf{t}, 2 symbols for \textsf{m} and only 1 symbol for \textsf{z}.\\\\
 Since more than 26 characters will be required in the ciphertext alphabet, various solutions are employed to invent larger alphabets. The standard way to do this is to include the numbers in the ciphertext alphabet, but we could also use a mixture of uppercase, lowercase, and upside down letters. Some cryptographers even design artistic symbols to use.\\\\
-The easiest way to break standard substitution ciphers is to look at the letter frequencies: the letter E is usually the most common letter in English, followed by T. If we allow the letter E to be replaced by any of 4 different characters, then we can no longer just take the most common letter in the ciphertext, since the letter count of E is spread over several characters. As we allow more and more possible alternatives for each letter, the resulting cipher becomes more and more secure.\\\\
+The easiest way to break standard substitution ciphers is to look at the letter frequencies: the letter \textsf{E} is usually the most common letter in English, followed by \textsf{T}. If we allow the letter \textsf{E} to be replaced by any of 4 different characters, then we can no longer just take the most common letter in the ciphertext, since the letter count of \textsf{E} is spread over several characters. As we allow more and more possible alternatives for each letter, the resulting cipher becomes more and more secure.\\\\
 For example, let's consider our cipher alphabet as follows:
 
 \begin{figure}[H]
@@ -413,12 +413,12 @@ For example, let's consider our cipher alphabet as follows:
 \centering
 \end{figure}
 
-To encipher the message `DEFEND THE EAST WALL OF THE CASTLE', we find the letter D in the top row. then replace it with the letter below it, F. The second letter, E, provides us with several choices: we could use any of Z, 7, 2 or 1. We choose one of these at random, say 7. After continuing with this, we get the ciphertext:\\
+To encipher the message \textsf{DEFEND THE EAST WALL OF THE CASTLE}, we find the letter \textsf{D} in the top row. then replace it with the letter below it, \textsf{F}. The second letter, \textsf{E}, provides us with several choices: we could use any of \textsf{Z}, \textsf{7}, \textsf{2} or \textsf{1}. We choose one of these at random, say \textsf{7}. After continuing with this, we get the ciphertext:\\
 \ \\
 \textbf{Plaintext}: \par\colorbox{gray!12}{\small{\texttt{DEFEND THE EAST WALL OF THE CASTLE}}}\\\\
 \textbf{Ciphertext}: \par\colorbox{gray!12}{\small{\texttt{F7EZ5F UC2 1DR6 M9PP 0E 6CZ SD4UP1}}}\\
 
-The number of ciphertext letters assigned to each plaintext letter was chosen to flatten the frequency distribution as much as possible. Since E is normally the most common letter, it is allowed more possibilities so that the frequency peak from the letter E will not be present in the ciphertext.\\\\
+The number of ciphertext letters assigned to each plaintext letter was chosen to flatten the frequency distribution as much as possible. Since \textsf{E} is normally the most common letter, it is allowed more possibilities so that the frequency peak from the letter \textsf{E} will not be present in the ciphertext.\\\\
 Breaking homophonic substitution ciphers can be very difficult if the number of homophones is high. The usual method is some sort of hill climbing, an algorithm which uses the fitness of a deciphered text to improve the decryption itself. In addition to finding which letters map to which others, we also need to determine how many letters each plaintext letter can become.
 
 \subsection{Book cipher}
@@ -437,7 +437,7 @@ An alternative approach is, for example, that of replacing the first letter of a
 
 \section{Polygraphic ciphers}
 A \textbf{polygraphic substitution} is a cipher in which a uniform substitution is performed on blocks of letters. When the length of the block is specifically known, more precise terms are used: for instance, a cipher in which pairs of letters are substituted is called digraphic.\\\\
-As a concept, polygraphic substitution contrasts with monoalphabetic substitution, in which individual letters are uniformly substituted, and polyalphabetic substitution, in which individual letters are substituted using multiple alphabets. In a polygraphic substitution cipher, plaintext letters are substituted in larger groups. The first advantage is that the frequency distribution is much flatter than that of individual letters (though not actually flat in real languages; e.g., `TH' is much more common that `XQ' in English. Second, the larger number of symbols requires correspondingly more ciphertext to productively analyze letter frequencies. In order to substitute pairs of letters, it would take a substitution alphabet composed of 676 symbols ($26^{2}$).
+As a concept, polygraphic substitution contrasts with monoalphabetic substitution, in which individual letters are uniformly substituted, and polyalphabetic substitution, in which individual letters are substituted using multiple alphabets. In a polygraphic substitution cipher, plaintext letters are substituted in larger groups. The first advantage is that the frequency distribution is much flatter than that of individual letters (though not actually flat in real languages; e.g., \textsf{TH} is much more common that \textsf{EQ} in English. Second, the larger number of symbols requires correspondingly more ciphertext to productively analyze letter frequencies. In order to substitute pairs of letters, it would take a substitution alphabet composed of 676 symbols ($26^{2}$).
 
 \subsection{Playfair cipher}
 The \textbf{Playfair cipher} was the first cipher to encrypt pairs of letters in cryptologic history. Charles Wheatstone invented it in 1854 for secrecy in telegraphy, but it bears the name of Lord Playfair who promoted its use\supercite{playfair}. The Playfair cipher has been largely used for tactical purposes by British forces in the Second Boer War, in World War I and in World War II: this was because Playfair is reasonably fast to use and requires no special equipment - just a pencil and some paper.\\\\
@@ -445,16 +445,16 @@ The Playfair cipher uses a $5 \times 4$ table containing a key word or phrase. M
 To encrypt a message, one would break the message into digrams, which will be substituted using the key table. To perform the substitution, we have to apply the following rules, in order, to each digram in the plaintext:
 
 \begin{itemize}
-	\item If both letters are the same (or only one letter is left in the plaintext), add an X after the first letter; encrypt the new pair and continue.
+	\item If both letters are the same (or only one letter is left in the plaintext), add an \textsf{X} after the first letter; encrypt the new pair and continue.
 	\item If the letters appear on the same row of the table, replace them with the letters to their immediately right respectively, wrapping around to the left side of the row if a letter in the original pair was on the right side of the row.
 	\item If the letters appear on the same column of the table, replace them with the letters immediately below respectively, wrapping around to the top side of the column if a letter in the original pair was on the bottom side of the column.
 	\item If the letters are not on the same row or column, replace with the letters on the same row respectively but at the other pair of corners of the rectangle defined by the original pair. The order is important - the first letter of the encrypted pair is the one that lies on the same row as the first letter of the plaintext.
 \end{itemize}
 
-To decrypt, we have to use the inverse of the last 3 rules, and the first as-is (dropping any extra Xs that do not make sense in the final message when finished).\\\\
+To decrypt, we have to use the inverse of the last 3 rules, and the first as-is (dropping any extra \textsf{X}s that do not make sense in the final message when finished).\\\\
 
 \subsubsection{Example}
-We'll use `playfair example' as the key of our cipher; the table becomes (omitted letters in red):\\\\
+We'll use \textsf{playfair example} as the key of our cipher; the table becomes (omitted letters in red):\\\\
 \begin{figure}[H]
 \includegraphics[scale=0.8]{playfair_example}
 \centering
@@ -462,7 +462,7 @@ We'll use `playfair example' as the key of our cipher; the table becomes (omitte
 \centering
 \end{figure}
 \ \\
-The message we have to encrypt is `Hide the gold in the tree stump'. After dividing the message in digrams, we analyze three of them which represent different scenarios.\\\\
+The message we have to encrypt is \textsf{Hide the gold in the tree stump}. After dividing the message in digrams, we analyze three of them which represent different scenarios.\\\\
 \begin{figure}[H]
 \minipage{0.28\textwidth}
   \includegraphics[width=\linewidth]{playfair_1}
@@ -474,7 +474,7 @@ The message we have to encrypt is `Hide the gold in the tree stump'. After divid
 \endminipage\hfill
 \minipage{0.28\textwidth}%
   \includegraphics[width=\linewidth]{playfair_10}
-  \caption{The digram EX, which is the tenth digram of the plaintext after applying the first rule, is replaced by XM; this is the same-row scenario}
+  \caption{The digram EX, which is the tenth digram of the plaintext after applying the first rule, is replaced by XM; this is the same-row scenario.}
 \endminipage
 \end{figure}
 \ \\
@@ -487,7 +487,7 @@ A different approach to tackling a Playfair cipher is the shotgun hill climbing 
 \subsection{Hill cipher}
 The \textbf{Hill cipher} was invented by Lester S. Hill in 1929, and like other polygraphic ciphers, it can work on digraphs, trigraphs or theoretically any sized blocks. This cipher uses linear algebra, and has a significantly more mathematical nature than some of the others\supercite{hill}. However, it is this nature that allows it to act easily on larger blocks of letters.\\\\
 To encrypt a message using the Hill cipher we must first turn our keyword into a key matrix (a $2 \times 2$ matrix for working with digraphs, a $3 \times 3$ matrix for working with trigraphs, etc). We also turn the plaintext into digraphs (or trigraphs) and each of these into a column vector. We then perform matrix multiplication modulo the length of the alphabet on each vector. These vectors are then converted back into letters to produce the ciphertext.\\\\
-We shall encrypt the plaintext message `short example` using the keyword \textit{hill}: the first step is to turn the keyword into a matrix. If the keyword was longer than the 4 letters needed, we would only take the first 4 letters, and if it was shorter, we would fill it up with the alphabet in order. We then convert this into a key matrix using the standard convention of positions of letters in the alphabet.\\\\
+We shall encrypt the plaintext message \colorbox{gray!12}{\small{\texttt{short example}}} using the keyword \textsf{hill}: the first step is to turn the keyword into a matrix. If the keyword was longer than the 4 letters needed, we would only take the first 4 letters, and if it was shorter, we would fill it up with the alphabet in order. We then convert this into a key matrix using the standard convention of positions of letters in the alphabet.\\\\
 \begin{equation}
 \begin{pmatrix}
 	H & I \\
@@ -517,7 +517,7 @@ We now split the plaintext into digraphs, write these as column vectors, and app
 \begin{pmatrix}11\\4\end{pmatrix}
 \end{equation}
 \ \\\\
-Now we must perform some matrix multiplication. We multiply the key matrix by each column vector in turn, then we apply the modulo 26 and then convert the numbers back to letters. For example, the first digram of the plaintext, `sh', becomes:\\\\
+Now we must perform some matrix multiplication. We multiply the key matrix by each column vector in turn, then we apply the modulo 26 and then convert the numbers back to letters. For example, the first digram of the plaintext, \textsf{sh}, becomes:\\\\
 \begin{equation}
 \begin{pmatrix}H&I\\L&L\end{pmatrix}\begin{pmatrix}s\\h\end{pmatrix}=
 \begin{pmatrix}7&8\\11&11\end{pmatrix}\begin{pmatrix}18\\7\end{pmatrix}=
@@ -566,7 +566,7 @@ K^{-1} = 7 \times \begin{pmatrix} 11 & 18 \\ 15 & 7 \end{pmatrix} =
 \begin{pmatrix} 77 & 126 \\ 165 & 49 \end{pmatrix} = \begin{pmatrix} 25 & 22 \\ 1 & 23 \end{pmatrix} \ mod \ 26
 \end{equation}
 \ \\\\
-Now that we have the inverse key matrix, we can easily convert the ciphertext back to plaintext using the same method adopted in the encryption process. For example, for the first digram `AP', corresponding to $(0, 15)$ we have:\\\\
+Now that we have the inverse key matrix, we can easily convert the ciphertext back to plaintext using the same method adopted in the encryption process. For example, for the first digram \textsf{AP}, corresponding to $(0, 15)$ we have:\\\\
 \begin{equation}
 \begin{pmatrix} 25 & 22 \\ 1 & 23 \end{pmatrix} \begin{pmatrix} 0 \\ 15 \end{pmatrix} = 
 \begin{pmatrix} 330 \\ 345 \end{pmatrix} = \begin{pmatrix} 18 \\ 7 \end{pmatrix} \ mod \ 26 \rightarrow \begin{pmatrix} s \\ h \end{pmatrix}
@@ -616,8 +616,7 @@ The process of frequency analysis uses various subtle properties of the language
 \subsection{Worked example}
 In this example we shall use frequency analysis to break the code used to encrypt the intercept given below, given that it has been encrypted with a monoalphabetic substitution cipher.\\
 
-\begin{displayquote}\texttt{{\small
-GFS WMY OG LGDVS MF SFNKYHOSU ESLLMRS, PC WS BFGW POL DMFRQMRS, PL OG CPFU M UPCCSKSFO HDMPFOSXO GC OIS LMES DMFRQMRS DGFR SFGQRI OG CPDD GFS LISSO GK LG, MFU OISF WS NGQFO OIS GNNQKKSFNSL GC SMNI DSOOSK. WS NMDD OIS EGLO CKSJQSFODY GNNQKKPFR DSOOSK OIS 'CPKLO', OIS FSXO EGLO GNNQKKPFR DSOOSK OIS 'LSNGFU' OIS CGDDGWPFR EGLO GNNQKKPFR DSOOSK OIS 'OIPKU', MFU LG GF, QFOPD WS MNNGQFO CGK MDD OIS UPCCSKSFO DSOOSKL PF OIS HDMPFOSXO LMEHDS. OISF WS DGGB MO OIS NPHISK OSXO WS WMFO OG LGDVS MFU WS MDLG NDMLLPCY POL LYEAGDL. WS CPFU OIS EGLO GNNQKKPFR LYEAGD MFU NIMFRS PO OG OIS CGKE GC OIS 'CPKLO' DSOOSK GC OIS HDMPFOSXO LMEHDS, OIS FSXO EGLO NGEEGF LYEAGD PL NIMFRSU OG OIS CGKE GC OIS 'LSNGFU' DSOOSK, MFU OIS CGDDGWPFR EGLO NGEEGF LYEAGD PL NIMFRSU OG OIS CGKE GC OIS 'OIPKU' DSOOSK, MFU LG GF, QFOPD WS MNNGQFO CGK MDD LYEAGDL GC OIS NKYHOGRKME WS WMFO OG LGDVS.
+\begin{displayquote}\texttt{\small{GFSWM YOGLG DVSMF SFNKY HOSUE SLLMR SPCWS BFGWP OLDMF RQMRS PLOGC PFUMU PCCSK SFOHD MPFOS XOGCO ISLME SDMFR QMRSD GFRSF GQRIO GCPDD GFSLI SSOGK LGMFU OISFW SNGQF OOISG NNQKK SFNSL GCSMN IDSOO SKWSN MDDOI SEGLO CKSJQ SFODY GNNQK KPFRD SOOSK OISCP KLOOI SFSXO EGLOG NNQKK PFRDS OOSKO ISLSN GFUOI SCGDD GWPFR EGLOG NNQKK PFRDS OOSKO ISOIP KUMFU LGGFQ FOPDW SMNNG QFOCG KMDDO ISUPC CSKSF ODSOO SKLPF OISHD MPFOS XOLME HDSOI SFWSD GGBMO OISNP HISKO SXOWS WMFOO GLGDV SMFUW SMDLG NDMLL PCYPO LLYEA GDLWS CPFUO ISEGL OGNNQ KKPFR LYEAG DMFUN IMFRS POOGO ISCGK EGCOI SCPKL ODSOO SKGCO ISHDM PFOSX OLMEH DSOIS FSXOE GLONG EEGFL YEAGD PLNIM FRSUO GOISC GKEGC OISLS NGFUD SOOSK MFUOI SCGDD GWPFR EGLON GEEGF LYEAG DPLNI MFRSU OGOIS CGKEG COISO IPKUD SOOSK MFULG GFQFO PDWSM NNGQF OCGKM DDLYE AGDLG COISN KYHOG RKMEW SWMFO OGLGD VXXXX
 }}
 \end{displayquote}
 \ \\
