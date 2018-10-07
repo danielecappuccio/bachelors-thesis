@@ -288,8 +288,8 @@ In some cases, underlying words can also be determined from the pattern of their
 According to the unicity distance of English, 27.6 letters of ciphertext are required to crack a mixed alphabet simple substitution. In practice, typically about 50 letters are needed, although some messages can be broken with fewer if unusual patterns are found. In other cases, the plaintext can be contrived to have a nearly flat frequency distribution, and much longer plaintexts will then be required by the cryptanalyst.
 
 \chapter{Polyalphabetic ciphers}
-The first chapter discussed ciphers based on monoalphabetic substitution, which are the ones that encode data using only \textit{one} alphabet (hence the Greek root \textit{mono} meaning 'one'). As we stated earlier, these are fairly easy to break, especially when the spaces between words are still there.\\\\
-How can it be made harder to decrypt messages? Well, one way is to use \textbf{more than one} alphabet, switching between them systematically. This type of cipher is called a \textbf{polyalphabetic substitution cipher} (\textit{poly} is the Greek root for 'many'); the main difference is that frequency analysis no longer works the same way to break these kind of ciphers.\\\\
+The first chapter discussed ciphers based on monoalphabetic substitution, which are the ones that encode data using only \textit{one} alphabet (hence the Greek root \textit{mono} meaning `one'). As we stated earlier, these are fairly easy to break, especially when the spaces between words are still there.\\\\
+How can it be made harder to decrypt messages? Well, one way is to use \textbf{more than one} alphabet, switching between them systematically. This type of cipher is called a \textbf{polyalphabetic substitution cipher} (\textit{poly} is the Greek root for `many'); the main difference is that frequency analysis no longer works the same way to break these kind of ciphers.\\\\
 The Vigenère cipher is probably the best-known example of a polyalphabetic cipher, though it is a simplified special case. The Enigma machine, which was used during World War Two, is more complex but it is still fundamentally a polyalphabetic substitution cipher.
 
 \section{Alberti cipher}
@@ -301,10 +301,8 @@ The \textbf{Alberti cipher} is probably the first polyalphabetic cipher ever cre
 \caption{A copy of the Alberti cipher disk.}
 \centering
 \end{figure}
-
 \ \\
-
-In his treatise \textit{De Cifris} Leon Battista Alberti describes his \textbf{Cipher Disk}, which he called \textit{Formula}, as made up of two concentric disks, attached by a common pin, which can rotate one with respect to the other.\\\\
+In his treatise \textit{De Cifris} Leon Battista Alberti described his \textbf{Cipher Disk}, which he called \textit{Formula}, as made up of two concentric disks, attached by a common pin, which can rotate one with respect to the other.\\\\
 The larger one is called \textit{Stabilis} (meaning `stationary' or `fixed'), meanwhile the smaller one is called \textit{Mobilis} (meaning `movable'). The circumference of each disk is divided into 24 equal cells.\\\\
 The outer ring contains one uppercase alphabet for plaintext and the inner ring has a lowercase mixed alphabet for ciphertext. The outer ring also includes the numbers 1 to 4 for the superencipherment of a codebook containing 336 phrases with assigned numerical values.\\\\
 This is a very effective method of concealing the code-numbers, since their equivalents cannot be distinguished from the other garbled letters. The sliding of the alphabets is controlled by key letters included in the body of the cryptogram\supercite{alberti}.\\\\
@@ -316,24 +314,23 @@ Trithemius used a \textbf{tabula recta}, which is a square table of alphabets, e
 \begin{figure}[H]
 \includegraphics[scale=0.4]{tabula_recta}
 \centering
-\caption{A \textit{tabula recta}, which creates 26 different Caesar ciphers}
+\caption{A \textit{tabula recta}, which creates 26 different Caesar ciphers.}
 \centering
 \end{figure}
-
 \ \\
-
 The \textit{tabula recta} is often referred to when discussing pre-computer ciphers, such as the Vigenère cipher and Blaise de Vigenère's less well-known autokey cipher. Moreover, it can be proved that all polyalphabetic ciphers based on Caesar ciphers can be described in terms of the \textit{tabula recta}.\\\\
 The encryption (and also the decryption) works like this: each letter of the message is switched with the letter directly below, using the first shifted alphabet. The next letter is switched by using the second shifted alphabet, and so on until the message is completely encrypted.\\\\
-The resulting ciphertext looks like a random string; however, the letter frequencies are just shifted. For instance, if \textit{e} is the most frequent letter in the cleartext and the shift is 3, then \textit{h} will be the most frequent letter in the ciphertext.\\\\
-Especially if the attacker is aware that this method is being used, it becomes extraordinarily easy to break. In fact, the cipher is considered vulnerable because it doesn't have a key (hence not following Kerckhoff's principle).
+The resulting ciphertext looks like a random string; however, the letter frequencies are just shifted. For instance, if \textsf{e} is the most frequent letter in the cleartext and the shift is 3, then \textsf{h} will be the most frequent letter in the ciphertext.\\\\
+Especially if the attacker is aware that this method is being used, it becomes extraordinarily easy to break. In fact, the cipher is considered vulnerable because it doesn't have a key.
 
 \section{Vigenère cipher}
 The \textbf{Vigenère cipher} is the best-known example of a polyalphabetic substitution cipher, which encrypts text by using a series of interwoven Caesar ciphers based on the letters of a keyword\supercite{vigenere1}.\\\\
-The power of this cipher is that it's fairly easy to understand and implement, but it was considered unbreakable for three centuries\supercite{vigenere2}, earning this way the nickname \textit{le chiffre indéchiffrable} (French for 'the indecipherable cipher').\\\\
+The power of this cipher is that it's fairly easy to understand and implement, but it was considered unbreakable for three centuries\supercite{vigenere2}, earning this way the nickname \textit{le chiffre indéchiffrable} (French for `the indecipherable cipher').\\\\
 It was originally described by Giovan Battista Bellaso in 1553, but the scheme was later misattributed to Blaise de Vigenère in the 19th century and so acquired its present name. The first man to describe a general method of breaking this cipher was Friedrick Kasiski in 1863.\\\\
 
 \begin{figure}[H]
 \includegraphics[scale=0.13]{slide_rule}
+\captionsetup{justification=centering, margin=2cm}
 \centering
 \caption{Cryptographic slide rule used as a calculation aid by the Swiss Army between 1914 and 1940.}
 \centering
@@ -343,15 +340,15 @@ It was originally described by Giovan Battista Bellaso in 1553, but the scheme w
 The cipher makes large use of the \textit{tabula recta}: at different points in the encryption process, the cipher uses a different alphabet from one of the rows. A repeating keyword determines the alphabet used at each point\supercite{vigenere3}.\\\\
 For example, suppose that the message to be encrypted is: \\\\
 \colorbox{gray!12}{\small{\texttt{ATTACKATDAWN}}}\\\\
-The sender chooses a keyword and repeats it until it matches the length of the plaintext; for instance, the keyword 'LEMON':\\\\
+The sender chooses a keyword and repeats it until it matches the length of the plaintext; for instance, the keyword \textsf{LEMON}:\\\\
 \colorbox{gray!12}{\small{\texttt{LEMONLEMONLE}}}\\\\
-Each row starts with a key letter. Although there are 26 key rows shown, a code will use only as many different alphabets as there are unique letters in the keyword, here just 5: {L, E, M, O, N}. For successive letters of the message, successive letters of the keyword will be taken and each message letter enciphered by using its corresponding key row. The next letter of the key is chosen. and that row is gone along to find the column heading that matches the message character. The letter that lies at the intersection of key row and message column is the enciphered letter.\\\\
-For example, the first letter of the plaintext, \textbf{A}, is paired with \textbf{L}, the first letter of the key. Therefore, row \textbf{L} and column \textbf{A} of the \textit{tabula recta} are used, i.e. \textbf{L}. Similarly, the intersection between row \textbf{E} and column \textbf{T} gives \textbf{X} as the enciphered letter. The rest of the message is encrypted likewise:\\\\
+Each row starts with a key letter. Although there are 26 key rows shown, a code will use only as many different alphabets as there are unique letters in the keyword, here just 5: \textsf{L}, \textsf{E}, \textsf{M}, \textsf{O}, \textsf{N}. For successive letters of the message, successive letters of the keyword will be taken and each message letter enciphered by using its corresponding key row. The next letter of the key is chosen. and that row is gone along to find the column heading that matches the message character. The letter that lies at the intersection of key row and message column is the enciphered letter.\\\\
+For example, the first letter of the plaintext, \textsf{A}, is paired with \textsf{L}, the first letter of the key. Therefore, row \textsf{L} and column \textsf{A} of the \textit{tabula recta} are used, i.e.\ \textsf{L}. Similarly, the intersection between row \textsf{E} and column \textsf{T} gives \textsf{X} as the enciphered letter. The rest of the message is encrypted likewise:\\\\
 Plaintext: \par\colorbox{gray!12}{\small{\texttt{ATTACKATDAWN}}}\\\\
 Key: \par\colorbox{gray!12}{\small{\texttt{LEMONLEMONLE}}}\\\\
 Ciphertext: \par\colorbox{gray!12}{\small{\texttt{LXFOPVEFRNHR}}}\\\\
 
-Decryption is performed in a similar fashion: once discovered the row in the table corresponding to the key letter, it's a matter of finding the position of the ciphertext letter in that particular row and then using the column's label as the plaintext. For example, in row \textbf{L} (from 'LEMON'), the ciphertext \textbf{L} appears in column \textbf{A}. Thus \textbf{A} is the first plaintext letter.
+Decryption is performed in a similar fashion: once discovered the row in the table corresponding to the key letter, it's a matter of finding the position of the ciphertext letter in that particular row and then using the column's label as the plaintext. For example, in row \textsf{L} (from \textsf{LEMON}), the ciphertext \textsf{L} appears in column \textsf{A}. Thus \textsf{A} is the first plaintext letter.
 
 \subsection{Algebraic description}
 The Vigenère cipher can be marvelously described algebraically. Once transformed all the letters into their correspondent numbers, $A \rightarrow 0, B \rightarrow 1, ... , Z \rightarrow 25$, the encryption $E$ and the decryption $D$ using the key $K$ can be written as:
@@ -368,16 +365,17 @@ The following is a \textsf{Python 2.7.x} implementation of a Vigenère cipher (n
 \pythonic{code/vigenere_cipher.py}
 \ \\
 \subsection{Gronsfeld cipher}
-The \textbf{Gronsfeld cipher} is essentially identical to the Vigenère except for the fact that only 10 alphabets are used (i.e., only 10 rows of the \textit{tabula recta}). In doing so, a numerical keyword is often used (e.g. 40295 instead of LEMON), so that the number of rows of the table strictly matches the number of different values a digit can have.
+The \textbf{Gronsfeld cipher} is essentially identical to the Vigenère except for the fact that only 10 alphabets are used (i.e., only 10 rows of the \textit{tabula recta}). In doing so, a numerical keyword is often used (e.g. \textsf{40295} instead of \textsf{LEMON}), so that the number of rows of the table strictly matches the number of different values a digit can have.
 
 \subsection{Beaufort cipher}
 The \textbf{Beaufort cipher} is another variant of the Vigenère cipher, with a different enciphering mechanism and tableau (\textit{tabula recta}). It became popular thanks to its application in a rotor-based cipher machine, the Hagelin M-209.\\\\
-The tableau on which this encryption scheme is based is practically the same as the one used in the Vigenère, but in reverse order starting with the letter Z in the first row, where the first row and the last column serve the same purpose.\\\\
+The tableau on which this encryption scheme is based is practically the same as the one used in the Vigenère, but in reverse order starting with the letter \textsf{Z} in the first row, where the first row and the last column serve the same purpose.\\\\
 
 \begin{figure}[H]
 \includegraphics[scale=0.27]{m-209}
+\captionsetup{justification=centering, margin=0.6cm}
 \centering
-\caption{The M-209, a mechanical cipher used by the US military in World War II and the Korean War, designed by Swedish cryptographer Boris Hagelin}
+\caption{The M-209, a mechanical cipher used by the US military in World War Two and the Korean War, designed by Swedish cryptographer Boris Hagelin.}
 \centering
 \end{figure}
 
@@ -385,15 +383,14 @@ The tableau on which this encryption scheme is based is practically the same as 
 With the definition of \textbf{autokey cipher}, we name all the ciphers that include the plaintext into the key used to encrypt. The key can be generated from the message in fancy ways: one of the most used alternative is that of adding a short \textit{primer key} to the front of the message.\\\\
 This cipher was invented in 1586 by Blaise de Vigenère, although his initial version used an agreed-upon letter of the alphabet as a primer, which made the key along with the rest the message.\\\\
 The encryption and decryption mechanisms, at least in more popular autokeys, follow the scheme of the Vigenère cipher, as well as the usage of a \textit{tabula recta}.\\\\
-For example, if we have to transmit the message \colorbox{gray!12}{\small{\texttt{ATTACKATDAWN}}} and our \textit{primer key} is \colorbox{gray!12}{\small{\texttt{QUEENLY}}}, then the key is \colorbox{gray!12}{\small{\texttt{QUEENLYATTACKATDAWN}}}; the key is consequently used as in the Vigenère cipher to encode the plaintext.
+For example, if we have to transmit the message \colorbox{gray!12}{\small{\texttt{ATTACKATDAWN}}} and our \textit{primer key} is \textsf{QUEENLY}, then the key is \colorbox{gray!12}{\small{\texttt{QUEENLYATTACKATDAWN}}}; the key is consequently used as in the Vigenère cipher to encode the plaintext.
 
 \subsection{Security for autokey ciphers}
-Autokey ciphers are vastily considered more secure than ciphers that used fixed keys; this is due to the fact that the key doesn't repeat itself within a single message. Powerful cryptanalysis examinations, like the Kasiski's one or the index of coincidence, don't work on the ciphertext\supercite{autokey}, although they are very effective for similar ciphers that use a single repeated key.\\\\
-Autokey ciphers, however, have a major weakness in the inclusion of the plaintext into the key. This means that the key is likely to contain common words at various points. The cipher can be attacked by using words, bigrams, trigrams etc. and by moving them until potentially-readable text comes out.\\\\
-
+Autokey ciphers are vastily considered more secure than ciphers that use fixed keys; this is due to the fact that the key doesn't repeat itself within a single message. Powerful cryptanalysis examinations, like the Kasiski's one or the index of coincidence, don't work on the ciphertext\supercite{autokey}, although they are very effective for similar ciphers that use a single repeated key.\\\\
+Autokey ciphers, however, have a major weakness in the inclusion of the plaintext into the key. This means that the key is likely to contain common words at various points. The cipher can be attacked by using words, bigrams, trigrams etc. and by moving them until potentially-readable text comes out.\\
 \section{Running key cipher}
-A \textbf{running key cipher} is a substitution cipher in which a text (e.g., from a book) or passage is used to provide a long keystream. In most cases, the book is agreed upon ahead of time, while the passage is chosen randomly for each message. The encryption scheme is the same as the Vigenère cipher, thus the tableau used is the \textit{tabula recta}\\\\
-For example, if we have to encrypt the plaintext "Where shall we meet and at what time" and we choose “The Code Book by Simon Singh, starting at page 45, line 1” as our passage, our keystream would be \textit{for centuries, the simple monoalphabetic substitution cipher had been sufficient to ensure secrecy}. After repeating the scheme using the given tableau we obtain this:\\\\\
+A \textbf{running key cipher} is a substitution cipher in which a text (e.g., from a book) or passage is used to provide a long keystream. In most cases, the book is agreed upon ahead of time, while the passage is chosen randomly for each message. The encryption scheme is the same as the Vigenère cipher, thus the tableau used is the \textit{tabula recta}.\\\\
+For example, if we have to encrypt \colorbox{gray!12}{\small{\texttt{Where shall we meet and at what time}}} and we choose “The Code Book by Simon Singh, starting at page 45, line 1” as our passage, our keystream would be \textsf{for centuries, the simple monoalphabetic substitution cipher had been sufficient to ensure secrecy}. We get the ciphertext:\\\\
 \textbf{Ciphertext}: \colorbox{gray!12}{\small{\texttt{BVVTI FAUCT AWFLI LIZSL XIVNH XEFMB TTBLX}}}\\\
 
 \subsection{Security for running key ciphers}
