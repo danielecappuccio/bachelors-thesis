@@ -137,19 +137,18 @@ The simplest form of substitution ciphers is the \textbf{monoalphabetic cipher},
 \section{Keyword cipher}
 
 A traditional way of creating new mixed alphabets follows: a keyword is written out, the repeated letters in it are removed, and at the end all the remaining letters in the alphabet use the standard order. Using this system, the keyword \textsf{helloworld} creates the following ciphertext alphabet:\\\\
-	\textbf{Plaintext alphabet}: \colorbox{gray!12}{\small{\texttt{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}}\\\\
-	\textbf{Ciphertext alphabet}:	\colorbox{gray!12}{\small{\texttt{HELOWRDABCFGIJKMNPQSTUVXYZ}}}\\
-
-Trivially, the ciphertext is written out in blocks of fixed length, omitting punctuation and spaces; this is done to help avoid transmission errors and to disguise word boundaries from the plaintext. These blocks are called 'groups'. When the telegraph was invented, five-letter groups was the common way of transmitting messages. In the frequent case the length of the message happens not to be divisible by five, it has to be padded at the end with 'nulls', i.e. with any characters which result in nonsense when decrypted: in this way, the receiver can easily spot them and discard them. \\\\
-However, a disadvantage of this scheme of derangement is that the last letters of the alphabet (which are mostly low frequency) tend to remain at the end. Although it is not often done, a more secure way of constructing a mixed alphabet is to perform columnar transpositions on the ordinary alphabet using the chosen keyword.\\\\
+	\textbf{\small{Plaintext alphabet}}: \par\colorbox{gray!12}{\small{\texttt{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}}\\
+	\textbf{\small{Ciphertext alphabet}}:	\par\colorbox{gray!12}{\small{\texttt{HELOWRDABCFGIJKMNPQSTUVXYZ}}}\\
 \ \\
+Trivially, the ciphertext is written out in blocks of fixed length, omitting punctuation and spaces; this is done to help avoid transmission errors and to disguise word boundaries from the plaintext. These blocks are called `groups'. When the telegraph was invented, five-letter groups was the common way of transmitting messages. In the frequent case the length of the message happens not to be divisible by five, it has to be padded at the end with `nulls', i.e. with any characters which result in nonsense when decrypted: in this way, the receiver can easily spot them and discard them. \\\\
+However, a disadvantage of this scheme of derangement is that the last letters of the alphabet (which are mostly low frequency) tend to remain at the end. Although it is not often done, a more secure way of constructing a mixed alphabet is to perform columnar transpositions on the ordinary alphabet using the chosen keyword.\\\\
 The ciphertext alphabet provided above encrypts \colorbox{gray!12}{\small{\texttt{LOREM IPSUM DOLOR}}}
 into\\ \colorbox{gray!12}{\small{\texttt{GKPWI BMQTI OKGKP}}}.
 
 \section{Caesar cipher}
 The \textbf{Caesar cipher} is the first example of widely known encryption techniques based on monoalphabetic substitution. The method is named after Julius Caesar, who frequently used it in his private correspondence. \\\\
-Fun fact, it was the first recorded use of this type of schemes, although other cipher are known to have been used earlier.\\\\
-Each letter in the plaintext is replaced by another letter which is some fixed number of positions down the alphabet. For instance, $D$ shall be replaced by $A$, if we're using a left shift of 3.\\\\
+Fun fact, it was the first recorded use of this type of schemes, although other ciphers are known to have been used earlier.\\\\
+Each letter in the plaintext is replaced by another letter which is some fixed number of positions down the alphabet. For instance, \textsf{D} shall be replaced by \textsf{A}, if we're using a left shift of 3.\\\\
 Encryption and decryption can also be represented using modular arithmetic by first transforming the letters into numbers, according to the traditional scheme $A \rightarrow 0,\\ B \rightarrow 1, ... , Z \rightarrow 25$, like this:\\
 
 \begin{equation}
@@ -165,7 +164,7 @@ D_{n}({x}) = (x - n) \ mod \ 26
 \begin{figure}[H]
 \includegraphics[scale=0.34]{caesar_cipher}
 \centering
-\caption{With a left shift of 3, the letter E is replaced by the letter B}
+\caption{With a left shift of 3, the letter \textsf{E} is replaced by the letter \textsf{B}}
 \centering
 \end{figure}
 
@@ -197,7 +196,7 @@ The use of symbols instead of letters is no impediment to cryptanalysis, as this
 \centering
 \end{figure}
 
-Using the Pigpen cipher key described above, the message "X MARKS THE SPOT" is rendered in ciphertext as:\\\\
+Using the Pigpen cipher key described above, the message \textsf{X MARKS THE SPOT} is rendered in ciphertext as:\\\\
 
 \begin{figure}[h]
 \includegraphics[scale=0.7]{xmarksthespot}
@@ -208,7 +207,6 @@ Using the Pigpen cipher key described above, the message "X MARKS THE SPOT" is r
 
 \section{Affine cipher}
 The \textbf{affine cipher} is another type of monoalphabetic substitution cipher, wherein each letter in an alphabet is first mapped to its numeric equivalent, then encrypted using a function, and lastly converted back to a letter. However, each letter encrypts to one other letter, meaning the cipher is essentially a standard substitution cipher with a rule governing which letter converts to which. As such, it has all the weaknesses of similar substitution ciphers\supercite{affine}.\\\\
-
 In the affine cipher the letters of an alphabet of size $m$ are first mapped to the integers in the range $0 ... m-1$. Modular arithmetic is subsequently used to transform the integer into another integer that corresponds to a ciphertext letter.\\\\ The encryption function for a single letter is:
 
 \begin{equation}
@@ -222,7 +220,6 @@ D{(x)} = a^{-1}(x-b)\ mod \ m
 \end{equation}
 
 \ \\and $a^{-1}$, which is the modular multiplicative inverse of $a$ modulo $m$ exists only if $GCD(a, m) = 1$.\\\\
- 
 To prove that the decryption function is the inverse of the encryption function:
 
 \begin{equation}
@@ -234,8 +231,8 @@ D{(E{(x)})} &= a^{-1}(E{(x)}-b)\ mod\ m\\
 				&= x \ mod \ m\\
 \end{split}
 \end{equation}
-
-For example, let's choose $a = 5$ and $b = 8$, with $m = 26$ since there are 26 characters in the alphabet being used. To encrypt the word "AFFINECIPHER" we just have to follow the mathematical rules and apply them to the values chosen above. \\\\We can fill out a table like this:\\\\
+\ \\
+For example, let's choose $a = 5$ and $b = 8$, with $m = 26$ since there are 26 characters in the alphabet being used. To encrypt the word \textsf{AFFINECIPHER} we just have to follow the mathematical rules and apply them to the values chosen above. \\\\We can fill out a table like this:\\\\
 
 \begin{figure}[H]
 \includegraphics[scale=0.5]{affine_encrypt}
@@ -245,10 +242,11 @@ For example, let's choose $a = 5$ and $b = 8$, with $m = 26$ since there are 26 
 \centering
 \end{figure}
 \ \\
-When decrypting, we first have to compute $a^{-1}$, i.e. the multiplicative inverse, which is 21 in this case. The corresponding decryption function will be 
+When decrypting, we first have to compute $a^{-1}$, i.e.\ the multiplicative inverse, which is 21 in this case. The corresponding decryption function will be\\
 \begin{equation}
 D{(y)} = 21(y-8) \ mod \ 26
 \end{equation}
+\ \\
 Once we have the decryption function, the final step will be that of using the table to convert numeric values back into letters.\\\\
 
 \begin{figure}[H]
@@ -273,7 +271,7 @@ E{(x)} = (m-1)(x-1) \ mod \ m = -(x+1) \ mod \ m
 \end{equation}
 
 \ \\
-Here follows an implementation of an affine cipher using the Python programming language, specifically the Python 3.5 version (the gcd library function was introduced since this version).\\
+Here follows an implementation of an affine cipher using the Python programming language, specifically the \textsf{Python 3.5} version (the \texttt{gcd} library function was introduced since this version).\\
 
 \newmintedfile[pythonic]{python}{
 	linenos = true,
@@ -1236,7 +1234,7 @@ For these reasons, transposition is often combined with a substitution cipher, r
 % \phantomsection
 
 % Remember to run Biber first!
-\printbibliography[heading=bibintoc]
+\printbibliography[title=References,heading=bibintoc]
 
 % \bibliographystyle{unsrt} % BibTeX style
 % \bibliography{bibliography} % BibTeX database without .bib extension
