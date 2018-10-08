@@ -590,16 +590,16 @@ Compiling a letter (or symbol) frequency table of the ciphertext, and comparing 
 Knowing whether the cipher has a key or not, and what form the key takes (word, number, sequence of numbers, etc.) can also help reduce the range of possibilities. For example, say that the ciphertext is uppercase letters without spaces or punctuation, and that we know it has a key which is a word or a short phrase. That narrows down the likely choices quite a bit:
 
 \begin{itemize}
-	\item If it's a transposition cipher, the obvious thing to try would be columnar transposition and its variants like double transposition.
-	\item If it's a monoalphabetic substitution cipher and has a keyword, the keyword cipher (described at the beginning of the first chapter) is the natural choice.
-	\item If it's a polyalphabetic substitution, there are more choices. The first cipher to try out would be Vigenère and autokey; if those don't work out, Beaufort may be worth trying too.
+	\item If it's a \textit{transposition cipher}, the obvious thing to try would be columnar transposition and its variants like double transposition.
+	\item If it's a \textit{monoalphabetic substitution cipher} and has a keyword, the keyword cipher (described at the beginning of the first chapter) is the natural choice.
+	\item If it's a \textit{polyalphabetic substitution}, there are more choices. The first cipher to try out would be Vigenère and autokey; if those don't work out, Beaufort may be worth trying too.
 \end{itemize}
 \ \\
 When one already knows what the key is supposed to be, testing each cipher should be pretty straightforward: one would just try to decrypt the message with the key and see if the output of that operation makes sense.\\\\
 Note that, in some seldom cases, effort can be shared between ciphers. For example, the Vigenère and autokey ciphers are identical for the beginning of the message; they only start to behave differently when the end of the keyword is reached. It may also be a good idea to try simple variants of these ciphers, such as switching the encryption and decryption rules around; some of them work equally well in both directions, and may have been used so.
 
 \section{Frequency analysis}
-The methodology behind \textbf{frequency analysis} relies on the fact that in any language, each letter has its own \textit{personality}. The most obvious trait that letters have is the frequency with which they appear in a language. Clearly in English the letter Z appears far less frequently than, say, A. In times gone by, if we wanted to find out the frequencies of letters within a language, we had to find a large piece of text and count each frequency. Now, however, we have computers that can do the hard work for us. But in fact, we don't even need to do this step, as for most languages there are databases of the letter frequencies, which have been calculated by looking at millions of texts, and are thus very highly accurate\supercite{digram_frequencies}.\\\\
+The methodology behind \textbf{frequency analysis} relies on the fact that in any language, each letter has its own \textit{personality}. The most obvious trait that letters have is the frequency with which they appear in a language. Clearly in English the letter \textsf{Z} appears far less frequently than, say, \textsf{A}. In times gone by, if we wanted to find out the frequencies of letters within a language, we had to find a large piece of text and count each frequency. Now, however, we have computers that can do the hard work for us. But in fact, we don't even need to do this step, as for most languages there are databases of the letter frequencies, which have been calculated by looking at millions of texts, and are thus very highly accurate\supercite{digram_frequencies}.\\\\
 From these databases we find that \textsf{E} is the most common letter in English, appearing about 12\% of the time (that is just over one in ten letters is an \textsf{E}). The next common letter is \textsf{T} at 9\%. The full frequency list is given by this graph:\\\\
 
 \begin{figure}[H]
@@ -610,7 +610,7 @@ From these databases we find that \textsf{E} is the most common letter in Englis
 \end{figure}
 \ \\
 We can use this information to help us break a code given by a monoalphabetic substitution cipher. This works because, if \textsf{e} has been encrypted to \textsf{X}, then every \textsf{X} was an \textsf{e}. Hence, the most common letter in the ciphertext should be \textsf{X}.\\\\
-If we were to just put all the letters in order, and replace them as in the frequencies, it would likely produce jibberish, especially if the ciphertext is short. The codebreaker has to use other `personality traits` of the letters to decrypt the message. This may include looking at common digraphs: there aren't many 2 letter words, and there are only a few letters which appear as doubles (\textsf{SS}, \textsf{EE}, \textsf{TT}, \textsf{LL}, \textsf{OO} and \textsf{FF} being the most common). Other common words also start to appear as we make more and more substitutions: for example, \textsf{tKe} might appear frequently after making substitutions for \textsf{t} and \textsf{e}. This is very likely to be \textsf{the}, the most common trigram in English.\\\\
+If we were to just put all the letters in order, and replace them as in the frequencies, it would likely produce jibberish, especially if the ciphertext is short. The codebreaker has to use other `personality traits' of the letters to decrypt the message. This may include looking at common digraphs: there aren't many 2 letter words, and there are only a few letters which appear as doubles (\textsf{SS}, \textsf{EE}, \textsf{TT}, \textsf{LL}, \textsf{OO} and \textsf{FF} being the most common). Other common words also start to appear as we make more and more substitutions: for example, \textsf{tKe} might appear frequently after making substitutions for \textsf{t} and \textsf{e}. This is very likely to be \textsf{the}, the most common trigram in English.\\\\
 The process of frequency analysis uses various subtle properties of the language, and for this reason, it is nearly impossible to have a computer do all the work. Inevitably, an element of human input is necessary in this process to make educated decisions about which letters to substitute.\\
 
 \subsection{Worked example}
@@ -642,9 +642,9 @@ One way to solve an encrypted message, if we know its language, is to find a dif
 \section{Kasiski examination}
 \textbf{Kasiski examination} is a method of attacking polyalphabetic substitution ciphers, named after Friedrich Kasiski who first published it in 1863, although it seems to have been independently discovered by Charles Babbage as early as 1846.\\\\
 The strength of ciphers like Vigenère one (and derivatives) is that they're not susceptibe to frequency analysis, due to the fact that the cipher rotates through different shifts, so the same plaintext letter will not always be encrypted to the same ciphertext letter\supercite{kasiski}.\\\\
-Nonetheless, there is one main weakness to the security of this kind of ciphers, and that's the fact that the key is repeated. If we use the keyword \textit{key}, then the keystream will be a repetition of it; this means that we have 3 interwoven Caesar ciphers, which can be individually broken using frequency analysis. The hard part is thus working out the length of the keyword.\\\\
-The solution that Kasiski came up with was ingenious. As an example, consider what we get when we encode the plaintext "maths is short for mathematics" using the keyword \textit{key}. When we use the Vigenère cipher, we can see that the ciphertext contains a repetition corresponding to the two times we see "math" in the plaintext.\\\\
-As a cryptanalyst this gives us some useful information. Since the repeating key are 15 letters apart, we know that the length of the key must be a divisor of 15. That is, the keyword must be of the lengths 1,3,5,15. Although it's theoretically possible to have keywords of length 1 or 15, we can drop these cases and focus on instances of keywords of length 3 and 5.\\\\
+Nonetheless, there is one main weakness to the security of this kind of ciphers, and that's the fact that the key is repeated. If we use the keyword \textsf{key}, then the keystream will be a repetition of it; this means that we have 3 interwoven Caesar ciphers, which can be individually broken using frequency analysis. The hard part is thus working out the length of the keyword.\\\\
+The solution that Kasiski came up with was ingenious. As an example, consider what we get when we encode the plaintext \colorbox{gray!12}{\small{\texttt{maths is short for mathematics}}} using the keyword \textsf{key}. When we use the Vigenère cipher, we can see that the ciphertext contains a repetition corresponding to the two times we see "math" in the plaintext.\\\\
+As a cryptanalyst this gives us some useful information. Since the repeating key are 15 letters apart, we know that the length of the key must be a divisor of 15. That is, the keyword must be of the lengths 1, 3, 5, 15. Although it's theoretically possible to have keywords of length 1 or 15, we can drop these cases and focus on instances of keywords of length 3 and 5.\\\\
 However, we have to consider the fact that it's possible for a string to repeat in the ciphertext as a pure coincidence. To increase our chances to find the length of the key, we can try to find more than one repeating string in the ciphertext, and computes the intersection of the sets describing the likely distances for every given string.\\\\
 Obviously, the longer the message the more repeated n-graphs there are likely to be, and the more confident we can be about the length of the keyword. Once discovered the length of the keyword, we can write out the ciphertext in that many columns. For instance, if the keyword is 6 letters long, we can write the ciphertext in 6 columns and do a bit of frequency analysis on each column\supercite{kasiski_method}.\\\\
 \subsection{Worked example}
@@ -652,8 +652,8 @@ In this example we shall use Kasiski examination in order to break the code used
 
 \begin{displayquote}{\small{\texttt{CVJTN AFENM CDMKB XFSTK LHGSO JWHOF UISFY FBEXE INFIM AYSSD YYIJN PWTOK FRHWV WTZFX HLUYU MSGVD URBWB IVXFA FMYFY XPIGB HWIFH HOJBE XAUNF IYLJW DKNHG AOVBH HGVIN AULZF OFUQC VFBYN FTYGM MSVGX CFZFO KQATU IFUFE RQTEW ZFOKM WOJYL NZBKS HOEBP NAYTF KNXLB VUAXC XUYYK YTFRH RCFUY CLUKT VGUFQ BESWY SSWLB YFEFZ VUWTR LLNGI ZGBMS ZKBTN TSLNN MDPMY MIUBV MTLOB JHHFW TJNAU FIZMB ZLIVH MBSUW LBYFE UYFUF ENBRV JVKOL LGTVU ZUAOJ NVUWT RLMBA TZMFS SOJQX LFPKN AULJC IOYVD RYLUJ MVMLV MUKBT NAMFP XXJPD YFIJF YUWSG VIUMB WSTUX MSSNY KYDJM CGASO UXBYS MCMEU NFJNA UFUYU MWSFJ UKQWS VXXUV UFFBP WBCFY LWFDY GUKDR YLUJM FPXXE FZQXY HGFLA CEBJB XQSTW IKNMO RNXCJ FAIBW WBKCM UKIVQ TMNBC CTHLJ YIGIM SYCFV MURMA YOBJU FVAUZ INMAT CYPBA NKBXL WJJNX UJTWI KBATC IOYBP PZHLZ JJZHL LVEYA IFPLL YIJIZ MOUDP LLTHV EVUMB XPIBB MSNSC MCGON BHCKI VLXMG CRMXN ZBKQH ODESY TVGOU GTHAG RHRMH FREYI JIZGA UNFZI YZWOU YWQZP ZMAYJ FJIKO VFKBT NOPLF WHGUS YTLGN RHBZS OPMIY SLWIK BANYU OYAPW ZXHVF UQAIA TYYKY KPMCE YLIRN PCDME IMFGW VBBMU PLHML QJWUG SKQVU DZGSY CFBSW VCHZX FEXXX AQROL YXPIU KYHMP NAYFO FHXBS WVCHZ XFEXX XAIRP XXGOV HHGGS VNHWS FJUKN ZBESH OKIRF EXGUF VKOLV JNAYI VVMMC GOFZA CKEVU MBATV HKIDM VXBHL IVWTJ AUFFA CKHCI KSFPK YQNWO LUMYV XYYKY AOYYP UKXFL MBQOF LACKP WZXHU FJYZG STYWZ GSNBB WZIVM NZXFI YWXWB KBAYJ FTIFY KIZMU IVZDI NLFFU VRGSS BUGNG OPQAI LIFOZ BZFYU WHGIR HWCFI ZMWYS UYMAU DMIYV YAWVN AYTFE YYCLP WBBMV ZZHZU HMRWX CFUYY VIENF HPYSM KBTMO IZWAI XZFOL BSMCH HNOJK BMBAT ZXXJS SKNAU LBJCL FWXDS UYKUC IOYJG FLMBW HFIWI XSFGX CZBMY MBWTR GXXSH XYKZG SDSLY DGNBX HAUJB TFDQC YTMWN PWHOF UISMI FFVXF SVFRN}}}
 \end{displayquote}
-
-The first step involves finding as many sets of repeating n-graphs as we can, and the distance between each of them. This is a very long-winded process to undertake by hand. Luckily, we can use simple computer programs to perform this operation and fill out a table like this:
+\ \\
+The first step involves finding as many sets of repeating n-graphs as we can, and the distance between each of them. This is a very long-winded process to undertake by hand. Luckily, we can use simple computer programs to perform this operation and fill out a table like this:\\
 
 \begin{figure}[H]
 \includegraphics[scale=0.53]{repeating_strings}
@@ -661,17 +661,17 @@ The first step involves finding as many sets of repeating n-graphs as we can, an
 \caption{}
 \centering
 \end{figure}
-
-We've successfully created a list of sets of repeating 4-graphs and 3-graphs. For each of these, we find the distance between two repeating units (the number next to the repeating unit), and then we highlight all the divisors (below 20) of this distance. So the two appearances of "ZFOK" are 18 letters apart, suggesting a keyword of length 18, 9, 6, 3 or 2.\\\\
+\ \\
+We've successfully created a list of sets of repeating 4-graphs and 3-graphs. For each of these, we find the distance between two repeating units (the number next to the repeating unit), and then we highlight all the divisors (below 20) of this distance. So the two appearances of \textsf{ZFOK} are 18 letters apart, suggesting a keyword of length 18, 9, 6, 3 or 2.\\\\
 When we look down the whole set of repeating units we are looking for the highest number that is selected in most of the pairs of repeating units. In this case, the most likely key length is 6. Notice that 2 and 3 are also very highly appearing.\\\\
 It does not have to fit every single repeating unit, but there should be only few special cases that do not work; we can assume that these are purely coincidental repetitions, and can easily mislead us.\\\\
-
-Once we are pretty sure about the length of the keyword, we can analyze each set of ciphertext letters that was encoded by the same keyword letter. In doing so, the easiest way is, with no doubt, to write the intercept out in 6 columns; we can subsequently study every column with simple frequency analysis. For example, this is frequency analysis made on L1, i.e. on the first column of the message.
+Once we are pretty sure about the length of the keyword, we can analyze each set of ciphertext letters that was encoded by the same keyword letter. In doing so, the easiest way is, with no doubt, to write the intercept out in 6 columns; we can subsequently study every column with simple frequency analysis. For example, this is frequency analysis made on L1, i.e. on the first column of the message.\\
 
 \begin{figure}[H]
 \includegraphics[scale=0.43]{kasiski_frequency_L1}
+\captionsetup{justification=centering, margin=2cm}
 \centering
-\caption{Relative frequency of letters for the Latin alphabet (red) and for L1 (yellow). Note that L1 is right-shifted of one unity, corresponding to the letter 'b'}
+\caption{Relative frequency of letters for the Latin alphabet (red) and for L1 (yellow). Note that L1 is right-shifted of one unity, corresponding to the letter \textsf{b}.}
 \centering
 \end{figure}
 
@@ -685,7 +685,7 @@ After repeating this process for every level (L1,...,L6), we are able not only t
 \section{Text characterisation}
 When cryptanalysing cipher, we usually try many `candidate' keys until a key is found that results in a readable output. \textbf{Text characterisation} is a way of automatically determining how close a piece of text is to natural English, which can be used as an aid to a cryptanalyst, or as a component in automatic code cracking software.
 \subsection{Index of coincidence}
-\textbf{Coincidence counting} is a technique, invented by William F. Friedman, of putting two texts side-by-side and counting the number of times that identical letters appear in the same position. This count, either as a ratio of the total or normalized by dividing by the expected count for a random source model, is what we call the index of coincidence, or IC\supercite{index_of_coincidence}.\\\\
+\textbf{Coincidence counting} is a technique, invented by William F. Friedman, of putting two texts side-by-side and counting the number of times that identical letters appear in the same position. This count, either as a ratio of the total or normalized by dividing by the expected count for a random source model, is what we call the \textit{index of coincidence}, or \textit{IC}\supercite{index_of_coincidence}.\\\\
 The index of coincidence provides a measure of how likely it is to draw two matching letters by randomly selecting two letters from a given text. The chance of drawing a specific letter in the text is (number of times that letter appears / length of the text), while the chance of drawing that same letter again, without replacement, is (appearances - 1 / text length - 1). If we compute the product of these two values for any letter of the alphabet and then sum these products, we get a chance a drawing two of a kind. This probability can then be normalized by multiplying it by some coefficient $c$, typically 26 in English.\\
 
 \begin{equation}
@@ -693,7 +693,6 @@ IC = c \times \bigg(\Big(\frac{n_{a}}{N} \times \frac{n_{a}-1}{N-1}\Big) + \Big(
 \end{equation}
 \ \\
 where $c$ is the normalizing coefficient, $n_a$ is the number of times the letter 'a' appears in the text, and $N$ is the length of the text.\\\\
-
 We can express the index of coincidence for a given letter-frequency distribution as a summation:\\
 
 \begin{equation}
@@ -701,48 +700,45 @@ IC = \frac{\sum\limits_{i=1}^{c} n_i(n_i-1)}{N(N-1)/c}
 \end{equation}
 \ \\
 where $N$ is the length of the text and $n_1,n_2,...,n_c$ are the frequencies (as integers) of the $c$ letters of the alphabet. Note that $\sum_{i} n_i=N$ \\\\
-
 The index of coincidence is useful both in the analysis of natural-language plaintext and in the analysis of ciphertext (cryptanalysis). Coincidence counting can help determine when two texts are written in the same language using the same alphabet. The \textit{causal} coincidence count for such texts will be distinctly higher than the \textit{accidental} coincidence count for texts in different languages, or texts using different alphabets, or gibberish texts.\\\\
 In cryptanalysis, we can assume that coincidences in ciphertext are caused by coincidences in the underlying plaintext, even when only ciphertext is available for testing and plaintext letter identities are disguised.\\\\
-For example, we imagine an alphabet of only the two letters A and B, and suppose that the letter A is used 75\% of the time, while the letter B 25\% of the time. If two texts in this language are laid side by side, then the following pairs can be expected:\\
+For example, we imagine an alphabet of only the two letters \textsf{A} and \textsf{B}, and suppose that the letter \textsf{A} is used 75\% of the time, while the letter \textsf{B} 25\% of the time. If two texts in this language are laid side by side, then the following pairs can be expected:\\
 
 \begin{center}
  \begin{tabular}{||c c||} 
  \hline
  Pair & Probability\\ [0.5ex] 
  \hline\hline
- AA & 56.25\% \\ 
+ \textsf{AA} & 56.25\% \\ 
  \hline
- BB & 6.25\% \\
+ \textsf{BB} & 6.25\% \\
  \hline
- AB & 18.75\% \\
+ \textsf{AB} & 18.75\% \\
  \hline
- BA & 18.75\% \\
- \hline
-\end{tabular}
-\end{center}
-\ \\\\
-
-Overall, the probability of a coincidence is 62.5\% (56.25\% + 6.25\%).\\\\
-Now we consider the case then both messages are encrypted using a simple monoalphabetic substitution cipher which replaces A with B and vice versa:\\
-
-\begin{center}
- \begin{tabular}{||c c||} 
- \hline
- Pair & Probability\\ [0.5ex] 
- \hline\hline
- AA & 6.25\% \\ 
- \hline
- BB & 56.25\% \\
- \hline
- AB & 18.75\% \\
- \hline
- BA & 18.75\% \\
+ \textsf{BA} & 18.75\% \\
  \hline
 \end{tabular}
 \end{center}
 \ \\
+Overall, the probability of a coincidence is 62.5\% (56.25\% + 6.25\%).\\\\
+Now we consider the case then both messages are encrypted using a simple monoalphabetic substitution cipher which replaces \textsf{A} with \textsf{B} and vice versa:\\
 
+\begin{center}
+ \begin{tabular}{||c c||} 
+ \hline
+ Pair & Probability\\ [0.5ex] 
+ \hline\hline
+ \textsf{AA} & 6.25\% \\ 
+ \hline
+ \textsf{BB} & 56.25\% \\
+ \hline
+ \textsf{AB} & 18.75\% \\
+ \hline
+ \textsf{BA} & 18.75\% \\
+ \hline
+\end{tabular}
+\end{center}
+\ \\
 The overall probability of a coincidence in this situation is 62.5\% (6.25\% + 56.25\%), exactly the same as for the unencrypted "plaintext" case. In effect, the new alphabet produced by the substitution is just a uniform renaming of the original character identities, which does not affect whether they match.\\\\
 Now we suppose that only \textit{one} message (say, the second) is encrypted using the same substitution cipher $(A, B) \rightarrow (B,A)$. The following pairs can now be expected:\\
 
@@ -762,9 +758,8 @@ Now we suppose that only \textit{one} message (say, the second) is encrypted usi
 \end{tabular}
 \end{center}
 \ \\
-
-The probability of a coincidence in this scenario is only 37.5\%(18.75\% + 18.75\%). This is incredibly lower than the probability when same-language, same-alphabet texts were used. It's evident that coincidences are more likely when the most frequent letters in each text are the same.\\\\
-The same principle applies to real languages like English, because certain letters, like E, occur much more frequently than other letters, so when any two English texts are compared, the coincidence count will be higher than when an English text and a foreign-language text are used.\\\\
+The probability of a coincidence in this scenario is only 37.5\% (18.75\% + 18.75\%). This is incredibly lower than the probability when same-language, same-alphabet texts were used. It's evident that coincidences are more likely when the most frequent letters in each text are the same.\\\\
+The same principle applies to real languages like English, because certain letters, like \textsf{E}, occur much more frequently than other letters, so when any two English texts are compared, the coincidence count will be higher than when an English text and a foreign-language text are used.\\\\
 One can think that this effect can be subtle. For example, similar languages will have a higher coincidence count than dissimilar languages. Moreover, it's not so hard to generate random text with a frequency distribution similar to real text, artificially raising the coincidence count. Nevertheless, this technique can be used effectively to identify when two texts are likely to contain meaningful information in the same language using the same alphabet, to discover periods for repeating keys, and to uncover many other kinds of nonrandom phenomena withing or among ciphertexts.\\\\
 Expected values for various languages are:\\
 
@@ -792,7 +787,7 @@ As a practical illustration of the use of the index of coincidence, suppose that
 \begin{displayquote}{\small{\texttt{QPWKA LVRXC QZIKG RBPFA EOMFL  JMSDZ VDHXC XJYEB IMTRQ WNMEA IZRVK CVKVL XNEIC FZPZC ZZHKM  LVZVZ IZRRQ WDKEC HOSNY XXLSP
 MYKVQ XJTDC IOMEE XDQVS RXLRL  KZHOV}}}
 \end{displayquote}
-
+\ \\
 Suspecting this to be an English plaintext encrypted using a Vigenère cipher and a short repeating keyword, we can consider5 the ciphertext stacked into some number of columns. If the key size happens to have been the same as the assumed number of columns, then all the letters within a single column will have been enciphered using the same key letter (i.e. using a simple Caesar cipher). The corresponding set of ciphertext letters should have a roughness of frequency distribution similar to that of English. Therefore, if we compute the aggregate delta-IC for all columns, it should be around 1.73, which is the IC of natural English; on the other hand, if we have incorrectly guessed the key size (number of columns), the aggregate delta-IC should be around 1. So we compute the delta-IC for assumed key size from 1 to 10:\\
 
 \begin{center}
@@ -823,14 +818,12 @@ Suspecting this to be an English plaintext encrypted using a Vigenère cipher an
 \end{tabular}
 \end{center}
 \ \\
-We see that the key size is most likely five; we then stack the ciphertext into five columns and repeat the same decryption scheme we used in the example of a Kasiski examination (frequency analysis to each column). In doing so, we find the keyword `EVERY' and the message (after inserting spaces):\\
+We see that the key size is most likely five; we then stack the ciphertext into five columns and repeat the same decryption scheme we used in the example of a Kasiski examination (frequency analysis to each column). In doing so, we find the keyword \textsf{every} and the message (after inserting spaces):\\
 
-\begin{displayquote}{\small{\textsf{MUST CHANGE MEETING LOCATION FROM BRIDGE TO UNDERPASS
-SINCE ENEMY AGENTS ARE BELIEVED TO HAVE BEEN ASSIGNED
-TO WATCH BRIDGE STOP  MEETING TIME UNCHANGED  XX}}}
+\begin{displayquote}{\small{\textsf{Must change meeting location from bridge to underpass since enemy agents are believed to have been assigned to watch bridge stop meeting time unchanged XX}}}
 \end{displayquote}
-
-`XX' are evidently null character used to pad out the final group for transmission. This entire procedure could easily be packaged into an automated algorithm for breaking such ciphers. Due to normal statistical fluctuation, such an algorithm will occasionally make wrong choices, especially when analyzing short ciphertext messages.
+\ \\
+\textsf{XX} are evidently null character used to pad out the final group for transmission. This entire procedure could easily be packaged into an automated algorithm for breaking such ciphers. Due to normal statistical fluctuation, such an algorithm will occasionally make wrong choices, especially when analyzing short ciphertext messages.
 
 \subsection{Chi-squared test}
 The \textbf{Chi-squared test}, also written $\chi^{2}$ test, is a measure of how similar two categorical probability distributions are. If the two distributions are identical, the chi-squared statistic is 0; conversely, if the distributions are very different, some higher number will result. The formula for the chi-squared statistic is:
@@ -840,7 +833,7 @@ The \textbf{Chi-squared test}, also written $\chi^{2}$ test, is a measure of how
 \end{equation}
 
 \ \\
-where $C_A$ is the count (and not the probability) of letter A, and $E_A$ is the expected count of letter A.\\\\
+where $C_A$ is the count (and not the probability) of letter \textsf{A}, and $E_A$ is the expected count of letter \textsf{A}.\\\\
 In cryptanalysis, chi-squared test is used to compare the distribution of plaintext and possibly decrypted ciphertext. The lowest value of the test means that the decryption was somehow successful with high probability. This method can be generalized for solving modern cryptographic problems.\\\\
 
 \subsubsection{Example}
@@ -849,10 +842,9 @@ The chi-squared statistic is a way for a computer to essentially perform this se
 
 \begin{displayquote}{\small{\texttt{AOLJH LZHYJ PWOLY PZVUL VMAOL LHYSP LZARU VDUHU KZPTW SLZAJ PWOLY ZPAPZ HAFWL VMZBI ZAPAB APVUJ PWOLY PUDOP JOLHJ OSLAA LYPUA OLWSH PUALE APZZO PMALK HJLYA HPUUB TILYV MWSHJ LZKVD UAOLH SWOHI LAXXX}}}
 \end{displayquote}
-
-We also know the probabilities of characters occurring in normal English text; however, the chi-squared statistic uses counts, not probabilities. As a result we need to use the probabilities to compute the expected count for each letter. For instance, if the letter E occurs with a probability of 0.127, we would expect it to occur 12.7 times every 100 characters. In order to calculate the expected count we just have to multiply the probability by the length of the ciphertext (162 in this case); we expect letter E to appear $ 162 \times 0.127 = 20.57$ times.\\\\
-
-We then decipher the ciphertext with each of the 25 possible keys and calculate the chi-squared statistic for each one. This compares the letter counts in each decryption with what we would expect the counts to be if the text were English. In the above ciphertext, the letter A occurs 18 times; if it were natural English, we would expect it to appear $162 \times 0.082 = 13.284$ times. Using this information we compute the following for the letter A:\\
+\ \\
+We also know the probabilities of characters occurring in normal English text; however, the chi-squared statistic uses counts, not probabilities. As a result we need to use the probabilities to compute the expected count for each letter. For instance, if the letter \textsf{E} occurs with a probability of 0.127, we would expect it to occur 12.7 times every 100 characters. In order to calculate the expected count we just have to multiply the probability by the length of the ciphertext (162 in this case); we expect letter \textsf{E} to appear $ 162 \times 0.127 = 20.57$ times.\\\\
+We then decipher the ciphertext with each of the 25 possible keys and calculate the chi-squared statistic for each one. This compares the letter counts in each decryption with what we would expect the counts to be if the text were English. In the above ciphertext, the letter \textsf{A} occurs 18 times; if it were natural English, we would expect it to appear $162 \times 0.082 = 13.284$ times. Using this information we compute the following for the letter \textsf{A}:\\
 
 \begin{equation}
 \frac{(18-13.284)^{2}}{13.284} = 1.674
@@ -919,8 +911,8 @@ We also need to perform this procedure for the other letters, then add the 26 re
  \hline
 \end{tabular}
 \end{center}
-
-We have figured out that the key used to encipher the message was probably 7 (i.e. a right-shift of 7 positions), cause the chi-squared computed on that plaintext is much lower than all the others. Hence the message:
+\ \\
+We have figured out that the key used to encipher the message was probably 7 (i.e.\ a right-shift of 7 positions), cause the chi-squared computed on that plaintext is much lower than all the others. Hence the message:
 
 \begin{displayquote}{\small{\textsf{The Caesar cipher is one of the earliest-known and simplest ciphers. It is a type of substitution cipher in which each letter in the plaintext is shifted a certain number of places down the alphabet.}}}
 \end{displayquote}
@@ -1147,9 +1139,9 @@ The introduction chapter gave us the opportunity to discuss the main aspects of 
 
 The second, third and fourth chapter focused on the principal classes of substitution ciphers (monoalphabetic, polyalphabetic, homophonic, polygraphic) while still discussing the possible security flaws for each of them.
 
-In the last two chapters, we show standard techniques along another approach called hill climb (a little more sophisticated), which can be used to successfully attack substitution ciphers: all of them use statistical measures which describe how the putative plaintext we come up with is `close' to natural English.
+In the last two chapters, we showed standard techniques along another approach called hill climb (a little more sophisticated), which can be used to successfully attack substitution ciphers: all of them use statistical measures which describe how the putative plaintext we come up with is `close' to natural English.
 
-We then apply the hill climb algorithm to a real-world case, i.e.\ one of the infamous Zodiac ciphers, and we find out a decent solution based on digrams frequencies, which still requires some manual adjustments to retrieve the correct plaintext. It might seem natural to try to extend the scoring to include, say, trigrams, but the work factor of the algorithm would increase exponentially. Another potential modification would be to include a word specified by the user which they think might appear in the plaintext, and this word can be tried at every offset in the ciphertext.
+We then applied the hill climb algorithm to a real-world case, i.e.\ one of the infamous Zodiac ciphers, and we found out a decent solution based on digrams frequencies, which still requires some manual adjustments to retrieve the correct plaintext. It might seem natural to try to extend the scoring to include, say, trigrams, but the work factor of the algorithm would increase exponentially. Another potential modification would be to include a word specified by the user which they think might appear in the plaintext, and this word can be tried at every offset in the ciphertext.
 
 Various heuristic search techniques could be combined with the general approach: for example, the outer hill climb layer could be replaced by a genetic algorithm\supercite{geneticalgorithm}, which can generate high-quality solutions to the problem of improving the putative plaintext.
 
