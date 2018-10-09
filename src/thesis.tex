@@ -103,7 +103,7 @@ Data encryption is a common method of ensuring confidentiality: the main aim of 
 Data integrity means maintaining and assuring the accuracy and completeness of data over its entire lifecycle: this means that data cannot be modified in an unauthorized or undetected manner\supercite{integrity}. Information security systems typically provide message integrity in addition to data confidentiality.
 
 \subsection{Availability}
-For any information system to serve its purpose, the information must be available when it is needed. In the realm of information security, availability can often be viewed as one of the most important parts of a successful information security program: by ensuring availability, for instance, an organization is able to perform to the standards that an organizations stake-holders expect.
+For any information system to serve its purpose, the information must be available when it is needed. In the realm of information security, availability can often be viewed as one of the most important parts of a successful information security program: by ensuring availability, for instance, an organization is able to perform to the standards that an organization's stake-holders expect.
 
 \section{The role of cryptography}
 \textbf{Cryptography} (or \textbf{cryptology}) developed a major role in ensuring confidentiality: since the first known forms of cryptography, the biggest concern was that of keeping information private and/or secret. Nowadays, whether it be passwords sent during a log on process, or storing confidential medical records in a database, encryption can assure that only the parties that have access to the appropriate key will get access to the effective data.\\\\
@@ -111,7 +111,7 @@ Various types of cryptographic systems exist that have different strenghts and w
 
 \subsection{Symmetric cryptography}
 Symmetric cryptography is the most traditional form of cryptography. In a symmetric cryptosystem, the involved parties share a common secret (password, pass phrase, or key). Data is encrypted and decrypted using the same key\supercite{symmetric}. These algorithms tend to be comparatively fast, but they cannot be used unless the involved parties have already exchanged their keys. Any party possessing a specific key can create encrypted messages using that key as well as decrypt any messages encrypted with the key.\\\\
-In systems involving a number of users who need to set up independently, secure communication channels symmetric cryptosystems can have practical limitations due to the requirement to securely distribute and manage large numbers of keys.
+In systems involving a number of users who need to set up independently, secure communication channels on symmetric cryptosystems can have practical limitations due to the requirement to securely distribute and manage large numbers of keys.
 
 \subsection{Asymmetric cryptography}
 Asymmetric algorithms, on the other hand, use two different keys, one to encrypt the data, and the other one to decrypt. These independent keys are generated together. One is labeled the \textit{public key} and is distributed freely; the other is labeled the \textit{private key} and must be kept secret\supercite{asymmetric}.\\\\
@@ -140,7 +140,7 @@ A traditional way of creating new mixed alphabets follows: a keyword is written 
 	\textbf{\small{Plaintext alphabet}}: \par\colorbox{gray!12}{\small{\texttt{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}}\\
 	\textbf{\small{Ciphertext alphabet}}:	\par\colorbox{gray!12}{\small{\texttt{HELOWRDABCFGIJKMNPQSTUVXYZ}}}\\
 \ \\
-Trivially, the ciphertext is written out in blocks of fixed length, omitting punctuation and spaces; this is done to help avoid transmission errors and to disguise word boundaries from the plaintext. These blocks are called `groups'. When the telegraph was invented, five-letter groups was the common way of transmitting messages. In the frequent case the length of the message happens not to be divisible by five, it has to be padded at the end with `nulls', i.e. with any characters which result in nonsense when decrypted: in this way, the receiver can easily spot them and discard them. \\\\
+Trivially, the ciphertext is written out in blocks of fixed length, omitting punctuation and spaces; this is done to help avoid transmission errors and to disguise word boundaries from the plaintext. These blocks are called `groups'. When the telegraph was invented, \textit{five-letter} groups was the common way of transmitting messages. In the frequent case the length of the message happens not to be divisible by five, it has to be padded at the end with `nulls', i.e. with any characters which result in nonsense when decrypted: in this way, the receiver can easily spot them and discard them. \\\\
 However, a disadvantage of this scheme of derangement is that the last letters of the alphabet (which are mostly low frequency) tend to remain at the end. Although it is not often done, a more secure way of constructing a mixed alphabet is to perform columnar transpositions on the ordinary alphabet using the chosen keyword.\\\\
 The ciphertext alphabet provided above encrypts \colorbox{gray!12}{\small{\texttt{LOREM IPSUM DOLOR}}}
 into\\ \colorbox{gray!12}{\small{\texttt{GKPWI BMQTI OKGKP}}}.
@@ -173,7 +173,7 @@ Nonetheless, the Caesar cipher can be easily broken, especially using a computer
 
 \section{Atbash cipher}
 The \textbf{Atbash cipher} is another simple substitution cipher, which was originally used to encrypt the Hebrew alphabet, though it can be slightly changed for use with any known writing system with a standard collating order.\\\\
-The cipher consists in mapping each letter of the alphabet to its reverse, in a way that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on. For example, the Latin alphabet would work like this: \\
+The cipher consists in mapping each letter of the alphabet to its \textit{reverse}, in a way that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on. For example, the Latin alphabet would work like this: \\
 
 \begin{figure}[H]
 \includegraphics[scale=0.65]{atbash_cipher}
@@ -195,7 +195,7 @@ The use of symbols instead of letters is no impediment to cryptanalysis, as this
 \caption{An example of graphical symbols used in a pigpen cipher}
 \centering
 \end{figure}
-
+\ \\
 Using the Pigpen cipher key described above, the message \textsf{X MARKS THE SPOT} is rendered in ciphertext as:\\\\
 
 \begin{figure}[h]
@@ -290,7 +290,7 @@ According to the unicity distance of English, 27.6 letters of ciphertext are req
 \chapter{Polyalphabetic ciphers}
 The previous chapter discussed ciphers based on monoalphabetic substitution, which are the ones that encode data using only \textit{one} alphabet (hence the Greek root \textit{mono} meaning `one'). As we stated earlier, these are fairly easy to break, especially when the spaces between words are still there.\\\\
 How can it be made harder to decrypt messages? Well, one way is to use \textbf{more than one} alphabet, switching between them systematically. This type of cipher is called a \textbf{polyalphabetic substitution cipher} (\textit{poly} is the Greek root for `many'); the main difference is that frequency analysis no longer works the same way to break these kind of ciphers.\\\\
-The Vigenère cipher is probably the best-known example of a polyalphabetic cipher, though it is a simplified special case. The Enigma machine, which was used during World War Two, is more complex but it is still fundamentally a polyalphabetic substitution cipher.
+The Vigenère cipher is probably the best-known example of a polyalphabetic cipher, though it is a simplified special case. The \textit{Enigma} machine, which was used during World War Two, is more complex but it is still fundamentally a polyalphabetic substitution cipher.
 
 \section{Alberti cipher}
 The \textbf{Alberti cipher} is probably the first polyalphabetic cipher ever created (15th century), and it was the peak of cryptography at that time. Its inventor was Leon Battista Alberti, an Italian artist, architect, poet, linguist, philosopher (and obviously, cryptographer!).\\\\
@@ -342,12 +342,11 @@ For example, suppose that the message to be encrypted is: \\\\
 \colorbox{gray!12}{\small{\texttt{ATTACKATDAWN}}}\\\\
 The sender chooses a keyword and repeats it until it matches the length of the plaintext; for instance, the keyword \textsf{LEMON}:\\\\
 \colorbox{gray!12}{\small{\texttt{LEMONLEMONLE}}}\\\\
-Each row starts with a key letter. Although there are 26 key rows shown, a code will use only as many different alphabets as there are unique letters in the keyword, here just 5: \textsf{L}, \textsf{E}, \textsf{M}, \textsf{O}, \textsf{N}. For successive letters of the message, successive letters of the keyword will be taken and each message letter enciphered by using its corresponding key row. The next letter of the key is chosen. and that row is gone along to find the column heading that matches the message character. The letter that lies at the intersection of key row and message column is the enciphered letter.\\\\
+Each row starts with a key letter. Although there are 26 key rows shown, a code will use only as many different alphabets as there are unique letters in the keyword, here just 5: \textsf{L}, \textsf{E}, \textsf{M}, \textsf{O}, \textsf{N}. For successive letters of the message, successive letters of the keyword will be taken and each message letter enciphered by using its corresponding key row. The next letter of the key is chosen and that row is gone along to find the column heading that matches the message character. The letter that lies at the intersection of key row and message column is the enciphered letter.\\\\
 For example, the first letter of the plaintext, \textsf{A}, is paired with \textsf{L}, the first letter of the key. Therefore, row \textsf{L} and column \textsf{A} of the \textit{tabula recta} are used, i.e.\ \textsf{L}. Similarly, the intersection between row \textsf{E} and column \textsf{T} gives \textsf{X} as the enciphered letter. The rest of the message is encrypted likewise:\\\\
 Plaintext: \par\colorbox{gray!12}{\small{\texttt{ATTACKATDAWN}}}\\\\
 Key: \par\colorbox{gray!12}{\small{\texttt{LEMONLEMONLE}}}\\\\
-Ciphertext: \par\colorbox{gray!12}{\small{\texttt{LXFOPVEFRNHR}}}\\\\
-
+Ciphertext: \par\colorbox{gray!12}{\small{\texttt{LXFOPVEFRNHR}}}\\\\\\
 Decryption is performed in a similar fashion: once discovered the row in the table corresponding to the key letter, it's a matter of finding the position of the ciphertext letter in that particular row and then using the column's label as the plaintext. For example, in row \textsf{L} (from \textsf{LEMON}), the ciphertext \textsf{L} appears in column \textsf{A}. Thus \textsf{A} is the first plaintext letter.
 
 \subsection{Algebraic description}
@@ -412,14 +411,14 @@ For example, let's consider our cipher alphabet as follows:
 \caption{}
 \centering
 \end{figure}
-
+\ \\
 To encipher the message \textsf{DEFEND THE EAST WALL OF THE CASTLE}, we find the letter \textsf{D} in the top row. then replace it with the letter below it, \textsf{F}. The second letter, \textsf{E}, provides us with several choices: we could use any of \textsf{Z}, \textsf{7}, \textsf{2} or \textsf{1}. We choose one of these at random, say \textsf{7}. After continuing with this, we get the ciphertext:\\
 \ \\
 \textbf{Plaintext}: \par\colorbox{gray!12}{\small{\texttt{DEFEND THE EAST WALL OF THE CASTLE}}}\\\\
 \textbf{Ciphertext}: \par\colorbox{gray!12}{\small{\texttt{F7EZ5F UC2 1DR6 M9PP 0E 6CZ SD4UP1}}}\\
-
+\ \\
 The number of ciphertext letters assigned to each plaintext letter was chosen to flatten the frequency distribution as much as possible. Since \textsf{E} is normally the most common letter, it is allowed more possibilities so that the frequency peak from the letter \textsf{E} will not be present in the ciphertext.\\\\
-Breaking homophonic substitution ciphers can be very difficult if the number of homophones is high. The usual method is some sort of hill climbing, an algorithm which uses the fitness of a deciphered text to improve the decryption itself. In addition to finding which letters map to which others, we also need to determine how many letters each plaintext letter can become.
+Breaking homophonic substitution ciphers can be very difficult if the number of homophones is high. The usual method is some sort of \textit{hill climbing}, an algorithm which uses the fitness of a deciphered text to improve the decryption itself. In addition to finding which letters map to which others, we also need to determine how many letters each plaintext letter can become.
 
 \subsection{Book cipher}
 A \textbf{book cipher} is a cipher in which the key is some aspect of a book or other piece of text. Traditionally book ciphers work by replacing word in the plaintext of a message with the location of words from the book being used; in this mode, book ciphers are more properly called \textit{codes}. This approach can have problems, since a word which appears in the plaintext but not in the book cannot be encoded\supercite{book_cipher}.\\\\
@@ -433,15 +432,15 @@ A \textbf{book cipher} is a cipher in which the key is some aspect of a book or 
 \end{figure}
 \ \\
 A famous use of a book cipher is in the \textit{Beale ciphers}, a set of three ciphertexts, one of which allegedly states the location of a buried treasure estimated to worth over \$43 million. The second document, in fact, uses the United States Declaration of Independence as the key text.\\\\
-An alternative approach is, for example, that of replacing the first letter of a word in the book with that word's position; in this case, the book is cipher is properly a homophonic substitution cipher. However, if used often, this technique has the side effect of creating a larger ciphertext and increases the time and effort required to decode the message.
+An alternative approach is, for example, that of replacing the first letter of a word in the book with that word's position; in this case, the book cipher is properly a homophonic substitution cipher. However, if used often, this technique has the side effect of creating a larger ciphertext and increases the time and effort required to decode the message.
 
 \section{Polygraphic ciphers}
-A \textbf{polygraphic substitution} is a cipher in which a uniform substitution is performed on blocks of letters. When the length of the block is specifically known, more precise terms are used: for instance, a cipher in which pairs of letters are substituted is called digraphic.\\\\
+A \textbf{polygraphic substitution} is a cipher in which a uniform substitution is performed on blocks of letters. When the length of the block is specifically known, more precise terms are used: for instance, a cipher in which pairs of letters are substituted is called \textit{digraphic}.\\\\
 As a concept, polygraphic substitution contrasts with monoalphabetic substitution, in which individual letters are uniformly substituted, and polyalphabetic substitution, in which individual letters are substituted using multiple alphabets. In a polygraphic substitution cipher, plaintext letters are substituted in larger groups. The first advantage is that the frequency distribution is much flatter than that of individual letters (though not actually flat in real languages; e.g., \textsf{TH} is much more common that \textsf{EQ} in English. Second, the larger number of symbols requires correspondingly more ciphertext to productively analyze letter frequencies. In order to substitute pairs of letters, it would take a substitution alphabet composed of 676 symbols ($26^{2}$).
 
 \subsection{Playfair cipher}
 The \textbf{Playfair cipher} was the first cipher to encrypt pairs of letters in cryptologic history. Charles Wheatstone invented it in 1854 for secrecy in telegraphy, but it bears the name of Lord Playfair who promoted its use\supercite{playfair}. The Playfair cipher has been largely used for tactical purposes by British forces in the Second Boer War, in World War I and in World War II: this was because Playfair is reasonably fast to use and requires no special equipment - just a pencil and some paper.\\\\
-The Playfair cipher uses a $5 \times 4$ table containing a key word or phrase. Memorization of the keyword and 4 simple rules was all that was required to create the table and use the cipher. To generate the key table, one would first fill in the spaces in the table with the letters of the keyword, dropping any duplicate letters, and then fill the remaining spaces with the rest of the letters of the alphabet in order (sometimes putting both I and J in the same space to reduce the alphabet to fit).\\\\
+The Playfair cipher uses a $5 \times 5$ table containing a key word or phrase. Memorization of the keyword and 4 simple rules was all that was required to create the table and use the cipher. To generate the key table, one would first fill in the spaces in the table with the letters of the keyword, dropping any duplicate letters, and then fill the remaining spaces with the rest of the letters of the alphabet in order (sometimes putting both \textsf{I} and \textsf{J} in the same space to reduce the alphabet to fit).\\\\
 To encrypt a message, one would break the message into digrams, which will be substituted using the key table. To perform the substitution, we have to apply the following rules, in order, to each digram in the plaintext:
 
 \begin{itemize}
@@ -466,15 +465,15 @@ The message we have to encrypt is \textsf{Hide the gold in the tree stump}. Afte
 \begin{figure}[H]
 \minipage{0.28\textwidth}
   \includegraphics[width=\linewidth]{playfair_1}
-  \caption{The digram HI, which is the first digram of the plaintext), is replaced by BM; this is the rectangle scenario (last rule).}
+  \caption{The digram \textsf{HI}, which is the first digram of the plaintext), is replaced by \textsf{BM}; this is the rectangle scenario (last rule).}
 \endminipage\hfill
 \minipage{0.28\textwidth}
   \includegraphics[width=\linewidth]{playfair_2}
-  \caption{The digram DE, which is the second digram of the plaintext, is replaced by OD; this is the same-column scenario.}
+  \caption{The digram \textsf{DE}, which is the second digram of the plaintext, is replaced by \textsf{OD}; this is the same-column scenario.}
 \endminipage\hfill
 \minipage{0.28\textwidth}%
   \includegraphics[width=\linewidth]{playfair_10}
-  \caption{The digram EX, which is the tenth digram of the plaintext after applying the first rule, is replaced by XM; this is the same-row scenario.}
+  \caption{The digram \textsf{EX}, which is the tenth digram of the plaintext after applying the first rule, is replaced by \textsf{XM}; this is the same-row scenario.}
 \endminipage
 \end{figure}
 \ \\
@@ -482,7 +481,7 @@ The message we have to encrypt is \textsf{Hide the gold in the tree stump}. Afte
 
 \subsubsection{Cryptanalysis}
 If there's enough text available, the Playfair cipher can be easily cracked. When only the ciphertext is known, brute force cryptanalysis of the cipher involves searching through the key space for matches between the frequency of occurrence of digrams and the known frequency of occurrence of digrams in the assumed language of the original message.\\\\
-A different approach to tackling a Playfair cipher is the shotgun hill climbing method. This starts with a random square of letters; then minor cchanges are introduced (e.g. switching letters or rows) to see if the candidate plaintext is more like standard plaintext than before the change. If the new square is deemed to be an improvement, then it is adopted and further mutated to find an even better candidate. Eventually, the plaintext or something very close is found to achieve a maximal score by whatever grading method is chosen. This is obviously beyond the range of typical human patience, but computers can adopt this algorithm to crack Playfair ciphers with a relatively small amount of text.\\\\
+A different approach to tackling a Playfair cipher is the \textit{shotgun hill climbing} method. This starts with a random square of letters; then minor changes are introduced (e.g. switching letters or rows) to see if the candidate plaintext is more like standard plaintext than before the change. If the new square is deemed to be an improvement, then it is adopted and further mutated to find an even better candidate. Eventually, the plaintext or something very close is found to achieve a maximal score by whatever grading method is chosen. This is obviously beyond the range of typical human patience, but computers can adopt this algorithm to crack Playfair ciphers with a relatively small amount of text.\\\\
 
 \subsection{Hill cipher}
 The \textbf{Hill cipher} was invented by Lester S. Hill in 1929, and like other polygraphic ciphers, it can work on digraphs, trigraphs or theoretically any sized blocks. This cipher uses linear algebra, and has a significantly more mathematical nature than some of the others\supercite{hill}. However, it is this nature that allows it to act easily on larger blocks of letters.\\\\
@@ -547,7 +546,7 @@ d d^{-1} = 1 \ mod \ 26
 There are several algorithms to efficiently calculate this number, but it is often easiest to use trial and error to find the inverse. In this case, we obtain that the number we're looking for is 7, since $15 \times 7 = 105 = 1 \ mod \ 26$
 
 \subsubsection{Step 2 - Find the adjugate matrix}
-The adjucate matrix is a matrix of the same size of the original; we won't give additional details on this, but for a $2 \times 2$ matrix it is fairly simple as it is just moving the elements to different positions and changing a couple of signs. That is, we swap the top left and bottom right numbers in the key matrix, and change the sign of the top right and bottom left number. Algebraically this is given below:\\\\
+The adjugate matrix is a matrix of the same size of the original; we won't give additional details on this, but for a $2 \times 2$ matrix it is fairly simple as it is just moving the elements to different positions and changing a couple of signs. That is, we swap the top left and bottom right numbers in the key matrix, and change the sign of the top right and bottom left number. Algebraically this is given below:\\\\
 \begin{equation}
 adj\begin{pmatrix}a&b\\c&d\end{pmatrix} = \begin{pmatrix}d&-b\\-c&a\end{pmatrix}
 \end{equation}
@@ -572,17 +571,17 @@ Now that we have the inverse key matrix, we can easily convert the ciphertext ba
 \begin{pmatrix} 330 \\ 345 \end{pmatrix} = \begin{pmatrix} 18 \\ 7 \end{pmatrix} \ mod \ 26 \rightarrow \begin{pmatrix} s \\ h \end{pmatrix}
 \end{equation}
 \ \\\\
-The key matrix must have a non-zero determinant which is coprime to the length of the alphabet. In fact, if $d$ is 0, then we cannot compute an inverse key matrix, and if $GCD(d, m)$ is not 1 ($m$ is the length of the alphabet), the multiplicative inverse of the determinant wouldn't exist.\\\\
+The key matrix must have a non-zero determinant which is coprime to the length of the alphabet. In fact, if $d$ is 0, then we cannot compute an inverse key matrix, and if $GCD(d, m)$ is not 1 ($m$ is the length of the alphabet), the multiplicative inverse of the determinant doesn't exist.\\\\
 The security of the Hill cipher increases as the key matrix size increases: however, the complexity of operating the cipher increases as well. Hill invented a machine that would mechanically implement a $6 \times 6$ version of the cipher, which was very secure. Unfortunately, the machine was unable to change the key setting, leaving it with limited use in the real world.\\\\
 Cryptanalysis of an intercept encrypted using the Hill Cipher is certainly possible, especially for small key sizes. For the $2 \times 2$ version, looking for repeated digraphs would be the first step, and matching the most common ciphertext digraphs to the most common digraphs in English would allow the interceptor to put together a possible key matrix acting on those four letters.
 
 \chapter{Breaking substitution ciphers: standard techniques}
-When breaking an unknown cipher, one first needs to figure out what kind of cipher one it is. Generally, a good starting point would be to start with the most common and well-known classical ciphers, drop those that obviously don't fit, and try the remaining ones to see if any of theme might work.\\\\
+When breaking an unknown cipher, one first needs to figure out what kind of cipher one it is. Generally, a good starting point would be to start with the most common and well-known classical ciphers, drop those that obviously don't fit, and try the remaining ones to see if any of them might work.\\\\
 An obvious first step is to look at the ciphertext alphabet: does the ciphertext consist of letters (and if so, in what alphabet), numbers, abstract symbols or some combination of those? If it's letters, does it include spaces, punctuation or case distinctions - and, if it does, do they seem to be scrambled in some way, or are they maybe just left as they are in the plaintext?\\\\
 Compiling a letter (or symbol) frequency table of the ciphertext, and comparing it to the corresponding table of plain English text, can often yield important information about the general type of cipher one is dealing with:
 
 \begin{itemize}
-	\item If the ciphertext is written in letters, and their frequencies more or less match those of plain English text, we're probably dealing with a transposition cipher, by which the positions held by units of plaintext are shifted according to a regular system, so that the ciphertext constitutes a permutation of the plaintext. Moreover, if the most frequent letters don't quite match. but still look plausible for natural text - mostly vowels and a few simple consonants - it might be a transposition of text in some other language.
+	\item If the ciphertext is written in letters, and their frequencies more or less match those of plain English text, we're probably dealing with a transposition cipher, by which the positions held by units of plaintext are shifted according to a regular system, so that the ciphertext constitutes a permutation of the plaintext. Moreover, if the most frequent letters don't quite match, but still look plausible for natural text - mostly vowels and a few simple consonants - it might be a transposition of text in some other language.
 	\item If the rank-frequency distribution looks similar to that for plain English, but the letters are scrambled, the cipher is very likely to be a monoalphabetic substitution one, possibly combined with transposition.
 	\item If the frequency distribution is closer to uniform than one would expect for natural language, we're probably looking at a polyalphabetic substitution cipher. With experience and enough ciphertext, one may even be able to guess at the most likely cipher just based on the frequency distribution.
 \end{itemize}
@@ -692,7 +691,7 @@ The index of coincidence provides a measure of how likely it is to draw two matc
 IC = c \times \bigg(\Big(\frac{n_{a}}{N} \times \frac{n_{a}-1}{N-1}\Big) + \Big(\frac{n_{b}}{N} \times \frac{n_{b}-1}{N-1}\Big) + ... + \Big(\frac{n_{z}}{N} \times \frac{n_{z}-1}{N-1}\Big)\bigg)
 \end{equation}
 \ \\
-where $c$ is the normalizing coefficient, $n_a$ is the number of times the letter 'a' appears in the text, and $N$ is the length of the text.\\\\
+where $c$ is the normalizing coefficient, $n_a$ is the number of times the letter \textsf{a} appears in the text, and $N$ is the length of the text.\\\\
 We can express the index of coincidence for a given letter-frequency distribution as a summation:\\
 
 \begin{equation}
@@ -788,7 +787,7 @@ As a practical illustration of the use of the index of coincidence, suppose that
 MYKVQ XJTDC IOMEE XDQVS RXLRL  KZHOV}}}
 \end{displayquote}
 \ \\
-Suspecting this to be an English plaintext encrypted using a Vigenère cipher and a short repeating keyword, we can consider5 the ciphertext stacked into some number of columns. If the key size happens to have been the same as the assumed number of columns, then all the letters within a single column will have been enciphered using the same key letter (i.e. using a simple Caesar cipher). The corresponding set of ciphertext letters should have a roughness of frequency distribution similar to that of English. Therefore, if we compute the aggregate delta-IC for all columns, it should be around 1.73, which is the IC of natural English; on the other hand, if we have incorrectly guessed the key size (number of columns), the aggregate delta-IC should be around 1. So we compute the delta-IC for assumed key size from 1 to 10:\\
+Suspecting this to be an English plaintext encrypted using a Vigenère cipher and a short repeating keyword, we can consider the ciphertext stacked into some number of columns. If the key size happens to have been the same as the assumed number of columns, then all the letters within a single column will have been enciphered using the same key letter (i.e. using a simple Caesar cipher). The corresponding set of ciphertext letters should have a roughness of frequency distribution similar to that of English. Therefore, if we compute the aggregate delta-IC for all columns, it should be around 1.73, which is the IC of natural English; on the other hand, if we have incorrectly guessed the key size (number of columns), the aggregate delta-IC should be around 1. So we compute the delta-IC for assumed key size from 1 to 10:\\
 
 \begin{center}
  \begin{tabular}{||c c||} 
@@ -1150,8 +1149,8 @@ Various heuristic search techniques could be combined with the general approach:
 The other big family of classical ciphers is the one of transpositions ciphers: these methods of encryption rely their security on the fact that the ciphertext consitutes a permutation of the plaintext. That is, the order of the symbols (or group of symbols) is changed, in particular shifted according to a regular system.
 
 \section{Rail fence cipher}
-The rail fence cipher (also known as zigzag cipher) is one of the simplest form of transposition cipher; it derives its name from the way in which it is encoded.\\\\
-In this cipher, the plaintext is written downwards and diagonally on successive `rails` of an imaginary fence, then moving up when the bottom has been reached. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.\\\\
+The \textsf{rail fence cipher} (also known as zigzag cipher) is one of the simplest form of transposition cipher; it derives its name from the way in which it is encoded.\\\\
+In this cipher, the plaintext is written downwards and diagonally on successive `rails' of an imaginary fence, then moving up when the bottom has been reached. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.\\\\
 In this example, we have 3 rails and our message is `\textsf{WE ARE DISCOVERED, FLEE AT ONCE}':\\\\
 
 \begin{figure}[H]
@@ -1164,7 +1163,7 @@ In this example, we have 3 rails and our message is `\textsf{WE ARE DISCOVERED, 
 Then we read off to get the ciphertext: \colorbox{gray!12}{\small{\texttt{WECRLTEERDSOEEFEAOCAIVDEN}}}\\\\
 
 \section{Route cipher}
-In a route cipher, the plaintext is first written out in a grid of given dimensions, then read off in a pattern given in the key. For example, using the same message used in the rail fence example:\\\\
+In a \textbf{route cipher}, the plaintext is first written out in a grid of given dimensions, then read off in a pattern given in the key. For example, using the same message used in the rail fence example:\\\\
 \begin{figure}[H]
 \includegraphics[scale=0.42]{route}
 \centering
@@ -1176,7 +1175,7 @@ The key might specify `spiral inwards, clockwise, starting from the top right', 
 Route ciphers have many more keys than a rail fence: in fact, for messages of reasonable length, the number of possible keys is potentially so huge that it cannot be enumerated even by modern computers. However, not all keys are equally good, because badly chosen routes will leave excessive chunks of plaintext, or text simply reversed, which would give cryptanalysts a nice clue on how the route has been chosen.\\\\
 
 \section{Columnar transposition}
-In a columnar transposition cipher, the plaintext is written out in rows of a fixed length, and then read out again column by column, and the columns are chosen in some scrambled order. Both the width of the rows and the permutation of the columns are often defined by a keyword.\\\\For example, the keyword \textsf{ZEBRAS} has length 6 (length of the rows), and the permutation is defined by the alphabetical order of the letters in the keyword, which in this case is 6, 3, 2, 4, 1, 5. Any spare spaces are usually filled with nulls (random characters). If the message is the same as before, we fill out this grid:\\\\
+In a \textbf{columnar transposition cipher}, the plaintext is written out in rows of a fixed length, and then read out again column by column, and the columns are chosen in some scrambled order. Both the width of the rows and the permutation of the columns are often defined by a keyword.\\\\For example, the keyword \textsf{ZEBRAS} has length 6 (length of the rows), and the permutation is defined by the alphabetical order of the letters in the keyword, which in this case is 6, 3, 2, 4, 1, 5. Any spare spaces are usually filled with nulls (random characters). If the message is the same as before, we fill out this grid:\\\\
 
 \begin{figure}[H]
 \includegraphics[scale=0.42]{columnar_regular}
@@ -1199,7 +1198,7 @@ A variant (called \textit{irregular}), does not make use of nulls, but the space
 This would result in the ciphertext: \colorbox{gray!12}{\small{\texttt{EVLNA CDTES EAROF ODEEC WIREE}}}.\\\\
 
 \section{Double columnar transposition}
-A single columnar transposition could be attacked by guessing possible column lengths, writing the message out it its columns (but in the wrong order, as the key is not yet known), and then looking for possible anagrams of known words. Thus to make it stronger, a double transposition was often used in the past; this is simply a columnar transposition applied twice. The same key can be used for both transpositions, or two different keys can be used.\\\\
+A single columnar transposition could be attacked by guessing possible column lengths, writing the message out it its columns (but in the wrong order, as the key is not yet known), and then looking for possible anagrams of known words. Thus to make it stronger, a \textbf{double transposition} was often used in the past; this is simply a columnar transposition applied twice. The same key can be used for both transpositions, or two different keys can be used.\\\\
 For instance, we can take the result of the irregular columnar transposition in the previous section, and perform a second encryption with a different keyword, \textsf{STRIPE}, which gives the permutation 5, 6, 4, 2, 3, 1.\\\\
 
 \begin{figure}[H]
