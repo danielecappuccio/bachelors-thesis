@@ -288,7 +288,7 @@ In some cases, underlying words can also be determined from the pattern of their
 According to the unicity distance of English, 27.6 letters of ciphertext are required to crack a mixed alphabet simple substitution. In practice, typically about 50 letters are needed, although some messages can be broken with fewer if unusual patterns are found. In other cases, the plaintext can be contrived to have a nearly flat frequency distribution, and much longer plaintexts will then be required by the cryptanalyst.
 
 \chapter{Polyalphabetic ciphers}
-The first chapter discussed ciphers based on monoalphabetic substitution, which are the ones that encode data using only \textit{one} alphabet (hence the Greek root \textit{mono} meaning `one'). As we stated earlier, these are fairly easy to break, especially when the spaces between words are still there.\\\\
+The previous chapter discussed ciphers based on monoalphabetic substitution, which are the ones that encode data using only \textit{one} alphabet (hence the Greek root \textit{mono} meaning `one'). As we stated earlier, these are fairly easy to break, especially when the spaces between words are still there.\\\\
 How can it be made harder to decrypt messages? Well, one way is to use \textbf{more than one} alphabet, switching between them systematically. This type of cipher is called a \textbf{polyalphabetic substitution cipher} (\textit{poly} is the Greek root for `many'); the main difference is that frequency analysis no longer works the same way to break these kind of ciphers.\\\\
 The Vigenère cipher is probably the best-known example of a polyalphabetic cipher, though it is a simplified special case. The Enigma machine, which was used during World War Two, is more complex but it is still fundamentally a polyalphabetic substitution cipher.
 
@@ -591,7 +591,7 @@ Knowing whether the cipher has a key or not, and what form the key takes (word, 
 
 \begin{itemize}
 	\item If it's a \textit{transposition cipher}, the obvious thing to try would be columnar transposition and its variants like double transposition.
-	\item If it's a \textit{monoalphabetic substitution cipher} and has a keyword, the keyword cipher (described at the beginning of the first chapter) is the natural choice.
+	\item If it's a \textit{monoalphabetic substitution cipher} and has a keyword, the keyword cipher (described at the beginning of \textit{Chapter 2}) is the natural choice.
 	\item If it's a \textit{polyalphabetic substitution}, there are more choices. The first cipher to try out would be Vigenère and autokey; if those don't work out, Beaufort may be worth trying too.
 \end{itemize}
 \ \\
